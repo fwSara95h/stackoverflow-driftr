@@ -1,0 +1,226 @@
+---
+title: "Generating txt file from HTML file using python"
+site: stackoverflow
+question_id: 74249278
+answer_id: 74257514
+url: https://stackoverflow.com/a/74257514
+author: Driftr95 (me)
+author_url: https://stackoverflow.com/users/6146136
+answered: 2022-10-30T23:43:03Z
+last_edited: 2022-11-01T15:02:08Z
+revisions: 3
+revision_history: https://stackoverflow.com/posts/74257514/revisions
+accepted: false
+score: 0
+chapter: C1
+chapter_title: "Selecting and navigating HTML"
+cluster: scrape-static-html-bs4
+helpers_referenced: []
+license: my own text and code (also published on Stack Overflow under CC BY-SA 4.0)
+retrieved_at: 2026-10-12T16:14:00Z
+content_sha256: 1561e35fe6027899e292c23f38da9796c7bdca222132a2e2ebd2ae30799a03df
+commit_dated: answered (the commit holds the text as retrieved, i.e. the last revision, not the first)
+status: as posted
+---
+
+# My answer — 2022-10-30
+
+Posted by me ([Driftr95](https://stackoverflow.com/users/6146136)) on Stack Overflow, <https://stackoverflow.com/a/74257514>, 2022-10-30, last edited 2022-11-01; score 0. Text as retrieved 2026-10-12.
+
+[I can't comment as to which library is best, but personally I am more familiar with bs4, so the solution utilizes BeautifulSoup.] I don't know of any modules that already have something for this [beyond those you have already tried], but the function below can probably be edited/configured for what you need:
+```python
+# when you want an attribute value or something else rather than just innerText
+not_text = {'img': ['alt'], 'br': [f'"\n"']}
+
+# for elements with indent
+indentsRef = {'li': 4}
+
+# "Block-level Elements" from https://www.w3schools.com/html/html_blocks.asp 
+bTags = ['address', 'article', 'aside', 'blockquote', 'canvas', 'dd', 'div', 'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hr', 'li', 'main', 'nav', 'noscript', 'ol', 'p', 'pre', 'section', 'table', 'tfoot', 'ul', 'video']
+
+def html_to_text(hNode, ble=bTags, indents=indentsRef, specialTags=not_text): 
+    # returns (isBlockElement: bool, innerText: str)
+
+    blePlus = ble + list(specialTags.keys()) 
+
+    if hNode.name is None or (hNode.name not in blePlus and not hNode.find(blePlus)): 
+        return (False, hNode.get_text(' ', strip=True)) 
+    
+    cnIndent = ' '*sum([
+        indents[t.name] for t in (list(hNode.parents) + [hNode]) 
+        if t.name in indents
+    ])
+
+    if hNode.name in specialTags: 
+        attribs = []
+        for attrib in specialTags[hNode.name]: 
+            if attrib == '':
+                attribs.append(hNode.get_text(' ', strip=True)) 
+            elif attrib[0] == attrib[-1] == '"':
+                attribs.append(attrib[1:-1]) 
+            #  elif attrib == '>__': # can add more 
+            else: attribs.append(hNode.get(attrib, ''))
+            
+        joiner = ' ' # ?customize for multi-attribute
+        return (hNode.name in ble, joiner.join(attribs))
+
+    if not hNode.find(blePlus): 
+      nodeText = [
+          (cnIndent + l) for l in hNode.get_text(' ', strip=True).split('\n')
+      ]
+      return (True, '\n'.join(nodeText))
+
+    nodeText = [] 
+    prevChild = None
+    for c in hNode.children:
+        c_h2t = html_to_text(c) 
+
+        space_before = cnIndent 
+        if prevChild and (not prevChild[0]) and c_h2t[0]: 
+            space_before = '\n' + space_before
+        space_after = '\n' if c_h2t[0] else ' '
+
+        nodeText.append(space_before + c_h2t[1] + space_after)
+        prevChild = c_h2t
+    return (hNode.name in ble, ''.join(nodeText))
+``` 
+
+<hr>
+
+If you pass `bodyHtml` from the code in your question to it,
+```python
+print(html_to_text(bodyHtml)[1])
+```
+
+the output isn't *exactly* what you posted, but it's quite close
+
+```latex
+Mathematics | Matrix Introduction
+
+View Discussion
+Improve Article
+Save Article
+Like Article
+
+
+    Difficulty Level : Easy
+    Last Updated : 17 Aug, 2022
+
+
+
+
+    Read
+    Discuss
+
+View Discussion
+Improve Article
+Save Article
+Like Article
+
+
+A matrix represents a collection of numbers arranged in an order of rows and columns. It is necessary to enclose the elements of a matrix in parentheses or brackets.
+A matrix with 9 elements is shown below.
+
+\begin{bmatrix}1 & 2 & 3\\4 & 5 & 6\\7 & 8 & 9\end{bmatrix}         
+
+
+This Matrix [M] has 3 rows and 3 columns. Each element of matrix [M] can be referred to by its row and column number. For example, a 23 = 6
+
+
+
+Order of a Matrix:
+The order of a matrix is defined in terms of its number of rows and columns.
+Order of a matrix = No. of rows ×No. of columns
+Therefore Matrix [M] is a matrix of order 3 × 3.
+
+Transpose of a Matrix :
+The transpose [M]Tof an m x n matrix [M] is the n x m matrix obtained by interchanging the rows and columns of [M].
+if A = [aij] mxn , then AT= [bij] nxm where bij= aji
+Properties of the transpose of a matrix:
+    (A T ) T = A
+    (A+B) T = A T + B T
+    (AB) T = B T A T
+
+Singular and Nonsingular Matrix:
+    Singular Matrix: A square matrix is said to be a singular matrix if its determinant is zero i.e. |A|=0
+    Nonsingular Matrix: A square matrix is said to be a non-singular matrix if its determinant is non-zero.
+
+Properties of Matrix addition and multiplication:
+    A + B = B + A (Commutative)
+    (A + B) + C = A + (B + C) (Associative)
+    AB ? BA (Not Commutative)
+    (AB) C = A (BC) (Associative)
+    A (B+C) = AB + AC (Distributive)
+
+Types of Matrices:
+    Square Matrix: A square Matrix has as many rows as it has columns. i.e. no of rows = no of columns.
+    Symmetric matrix: A square matrix is said to be symmetric if the transpose of the original matrix is equal to its original matrix. i.e. (A T ) = A.
+    Skew-symmetric: A skew-symmetric (or antisymmetric or antimetric[1]) matrix is a square matrix whose transpose equals its negative.i.e. (A T ) = -A.
+    Diagonal Matrix: A diagonal matrix is a square matrix in which the entries outside the main diagonal are all zero. The term usually refers to square diagonal matrices.
+    Identity Matrix: A square matrix in which all the elements of the principal diagonal are ones and all other elements are zeros. Identity matrix is denoted as I.
+    Orthogonal Matrix: A matrix is said to be orthogonal if AA T = A T A = I
+    Idempotent Matrix: A matrix is said to be idempotent if A 2 = A
+    Involuntary Matrix: A matrix is said to be Involuntary if A 2 = I.
+    Zero or Null Matrix: A matrix is said to zero or null matrix if all its elements are zero
+    Upper Triangular Matrix: A square matrix in which all the elements below the diagonal are zero is known as the upper triangular matrix
+    Lower Triangular Matrix: A square matrix in which all the elements above the diagonal are zero is known as the lower triangular matrix
+
+Note: Every Square Matrix can uniquely be expressed as the sum of a symmetric matrix and skew-symmetric matrix. A = 1/2 (A T + A) + 1/2 (A – A T ).
+Determinant of a matrix :
+The determinant of a matrix is a number associated with that square matrix. The determinant of a matrix can only be calculated for a square matrix. It is represented by |A|.
+Example:
+Input: 2 X 2 Matrix
+\text{If A = }\begin{bmatrix} a & b \\ c & d \end{bmatrix}\text{then,}         
+Then, the determinant is -> |A| = ad – bc
+
+Adjoint of a square matrix: The adjoint of a matrix A is the transpose of the cofactor matrix of A
+\text{If A = }\begin{bmatrix} a_1 & b_1 & c_1\\ a_2 & b_2 & c_2\\ a_3 & b_3 & c_3 \end{bmatrix}\text{then,}         
+
+\text{Adj A = Transpose of }\begin{bmatrix} A_1 & B_1 & C_1\\ A_2 & B_2 & C_2\\ A_3 & B_3 & C_3 \end{bmatrix}\text{=} \begin{bmatrix} A_1 & A_2 & A_3\\ B_1 & B_2 & B_3\\ C_1 & C_2 & C_3 \end{bmatrix}         
+
+\text Where, \begin{bmatrix} A_1 & B_1 & C_1\\ A_2 & B_2 & C_2\\ A_3 & B_3 & C_3 \end{bmatrix} \text {is cofactor matrix of A}        
+
+Properties of Adjoint:
+    A(Adj A) = (Adj A) A = |A| I n
+    Adj(AB) = (Adj B) . (Adj A)
+    |Adj A| = |A| n-1
+    Adj(kA) = k n-1 Adj(A)
+    |adj(adj(A))| = |A| ^ (n-1) ^ 2
+    adj(adj(A)) = |A| ^ (n-2)    *  A
+    If A = [L,M,N] then adj(A) = [MN, LN, LM]
+    adj(I) = I
+
+Where, “n = number of rows = number of columns”
+The inverse of a square matrix:
+A^{-1} = \frac{Adj A}{|A|}         
+
+Here |A| should not be equal to zero, which means matrix A should be non-singular.
+Properties of the inverse:
+    (A -1 ) -1 = A
+    (AB) -1 = B -1 A -1
+    only a non singular square matrix can have an inverse.
+
+Where should we use the inverse matrix?
+If you have a set of simultaneous equations:
+7x + 2y + z = 21
+3y – z = 5
+-3x + 4y – 2x = -1
+As we know when AX = B, then X = A -1 B so we can calculate the inverse of A and by multiplying it by B, we can get the values of x, y, and z.
+Trace of a matrix:
+The trace of a matrix is denoted as tr(A) which is used only for square matrix and equals the sum of the diagonal elements of the matrix. Remember trace of a matrix is also equal to the sum of the eigenvalue of the matrix. For example:
+\begin{bmatrix} 1 & 2 & 3\\ 4 & 5 & 6\\ 7 & 8 & 9 \end{bmatrix} \text{ tr(A) = 1+5+9 = 15}         
+
+
+This article is contributed by Nitika Bansal . If you like GeeksforGeeks and would like to contribute, you can also write an article using write.geeksforgeeks.org or mail your article to review-team@geeksforgeeks.org. See your article appearing on the GeeksforGeeks main page and help other Geeks.
+Please write comments if you find anything incorrect, or you want to share more information about the topic discussed above.
+
+
+
+
+My Personal Notes arrow_drop_up
+
+Save
+
+
+
+```
