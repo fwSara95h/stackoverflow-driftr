@@ -1,0 +1,177 @@
+---
+title: "Question on web-scraping hyperlinks with element criteria using python on tennisexplorer.com"
+site: stackoverflow
+question_id: 74419007
+answer_id: 74419291
+url: https://stackoverflow.com/a/74419291
+author: Driftr95 (me)
+author_url: https://stackoverflow.com/users/6146136
+answered: 2022-11-13T07:46:58Z
+last_edited: never
+revisions: 1
+revision_history: https://stackoverflow.com/posts/74419291/revisions
+accepted: true
+score: 1
+chapter: C3
+chapter_title: "Links, attributes, images and downloads"
+cluster: scrape-static-html-bs4
+helpers_referenced: []
+license: my own text and code (also published on Stack Overflow under CC BY-SA 4.0)
+retrieved_at: 2026-10-12T16:14:00Z
+content_sha256: db0a44c0ea309d35cf0f8753becf58ce6002fec58a46c78a27b2581debc16e75
+commit_dated: answered (the commit holds the text as retrieved, i.e. the last revision, not the first)
+status: as posted
+---
+
+# My answer — 2022-11-13
+
+Posted by me ([Driftr95](https://stackoverflow.com/users/6146136)) on Stack Overflow, <https://stackoverflow.com/a/74419291>, 2022-11-13; **accepted**; score 1. Text as retrieved 2026-10-12.
+
+You could add conditions in the list comprehension
+```python
+col1 = [
+    a.get('href') for a in soup.find_all('a') if a.parent.name == 'td' 
+    and a.string == 'info' and not a.parent.find_next_sibling()
+]
+```
+or you could just get specific with a [selector](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#css-selectors)
+```python
+col1 = [a.get('href') for a in soup.select('td:last-child a[title="Click for match detail"][href]')]
+```
+
+Both return the same list of links
+
+```lang-none
+  0   https://www.tennisexplorer.com/match-detail/?id=2188301
+  1   https://www.tennisexplorer.com/match-detail/?id=2188937
+  2   https://www.tennisexplorer.com/match-detail/?id=2188807
+  3   https://www.tennisexplorer.com/match-detail/?id=2188867
+  4   https://www.tennisexplorer.com/match-detail/?id=2188869
+  5   https://www.tennisexplorer.com/match-detail/?id=2189045
+  6   https://www.tennisexplorer.com/match-detail/?id=2189097
+  7   https://www.tennisexplorer.com/match-detail/?id=2188871
+  8   https://www.tennisexplorer.com/match-detail/?id=2189083
+  9   https://www.tennisexplorer.com/match-detail/?id=2188569
+ 10   https://www.tennisexplorer.com/match-detail/?id=2188327
+ 11   https://www.tennisexplorer.com/match-detail/?id=2188369
+ 12   https://www.tennisexplorer.com/match-detail/?id=2188319
+ 13   https://www.tennisexplorer.com/match-detail/?id=2188741
+ 14   https://www.tennisexplorer.com/match-detail/?id=2188809
+ 15   https://www.tennisexplorer.com/match-detail/?id=2188789
+ 16   https://www.tennisexplorer.com/match-detail/?id=2188911
+ 17   https://www.tennisexplorer.com/match-detail/?id=2188875
+ 18   https://www.tennisexplorer.com/match-detail/?id=2188991
+ 19   https://www.tennisexplorer.com/match-detail/?id=2188813
+ 20   https://www.tennisexplorer.com/match-detail/?id=2188803
+ 21   https://www.tennisexplorer.com/match-detail/?id=2189015
+ 22   https://www.tennisexplorer.com/match-detail/?id=2189035
+ 23   https://www.tennisexplorer.com/match-detail/?id=2188989
+ 24   https://www.tennisexplorer.com/match-detail/?id=2189171
+ 25   https://www.tennisexplorer.com/match-detail/?id=2188853
+ 26   https://www.tennisexplorer.com/match-detail/?id=2188523
+ 27   https://www.tennisexplorer.com/match-detail/?id=2189073
+ 28   https://www.tennisexplorer.com/match-detail/?id=2189055
+ 29   https://www.tennisexplorer.com/match-detail/?id=2188967
+ 30   https://www.tennisexplorer.com/match-detail/?id=2188887
+ 31   https://www.tennisexplorer.com/match-detail/?id=2188795
+ 32   https://www.tennisexplorer.com/match-detail/?id=2188851
+ 33   https://www.tennisexplorer.com/match-detail/?id=2188943
+ 34   https://www.tennisexplorer.com/match-detail/?id=2188777
+ 35   https://www.tennisexplorer.com/match-detail/?id=2188883
+ 36   https://www.tennisexplorer.com/match-detail/?id=2189005
+ 37   https://www.tennisexplorer.com/match-detail/?id=2188827
+ 38   https://www.tennisexplorer.com/match-detail/?id=2188773
+ 39   https://www.tennisexplorer.com/match-detail/?id=2188941
+ 40   https://www.tennisexplorer.com/match-detail/?id=2188885
+ 41   https://www.tennisexplorer.com/match-detail/?id=2188765
+ 42   https://www.tennisexplorer.com/match-detail/?id=2188337
+ 43   https://www.tennisexplorer.com/match-detail/?id=2188521
+ 44   https://www.tennisexplorer.com/match-detail/?id=2188963
+ 45   https://www.tennisexplorer.com/match-detail/?id=2187855
+ 46   https://www.tennisexplorer.com/match-detail/?id=2188771
+ 47   https://www.tennisexplorer.com/match-detail/?id=2188729
+ 48   https://www.tennisexplorer.com/match-detail/?id=2188637
+ 49   https://www.tennisexplorer.com/match-detail/?id=2188635
+ 50   https://www.tennisexplorer.com/match-detail/?id=2188657
+ 51   https://www.tennisexplorer.com/match-detail/?id=2188753
+ 52   https://www.tennisexplorer.com/match-detail/?id=2188731
+ 53   https://www.tennisexplorer.com/match-detail/?id=2188751
+ 54   https://www.tennisexplorer.com/match-detail/?id=2188727
+ 55   https://www.tennisexplorer.com/match-detail/?id=2188947
+ 56   https://www.tennisexplorer.com/match-detail/?id=2188601
+ 57   https://www.tennisexplorer.com/match-detail/?id=2188907
+ 58   https://www.tennisexplorer.com/match-detail/?id=2189033
+ 59   https://www.tennisexplorer.com/match-detail/?id=2189085
+ 60   https://www.tennisexplorer.com/match-detail/?id=2189089
+ 61   https://www.tennisexplorer.com/match-detail/?id=2188997
+ 62   https://www.tennisexplorer.com/match-detail/?id=2188515
+ 63   https://www.tennisexplorer.com/match-detail/?id=2188571
+ 64   https://www.tennisexplorer.com/match-detail/?id=2189087
+ 65   https://www.tennisexplorer.com/match-detail/?id=2188605
+ 66   https://www.tennisexplorer.com/match-detail/?id=2189067
+ 67   https://www.tennisexplorer.com/match-detail/?id=2189091
+ 68   https://www.tennisexplorer.com/match-detail/?id=2188877
+ 69   https://www.tennisexplorer.com/match-detail/?id=2188849
+ 70   https://www.tennisexplorer.com/match-detail/?id=2188889
+ 71   https://www.tennisexplorer.com/match-detail/?id=2188841
+ 72   https://www.tennisexplorer.com/match-detail/?id=2188955
+ 73   https://www.tennisexplorer.com/match-detail/?id=2189001
+ 74   https://www.tennisexplorer.com/match-detail/?id=2188891
+ 75   https://www.tennisexplorer.com/match-detail/?id=2188843
+ 76   https://www.tennisexplorer.com/match-detail/?id=2188999
+ 77   https://www.tennisexplorer.com/match-detail/?id=2188939
+ 78   https://www.tennisexplorer.com/match-detail/?id=2188983
+ 79   https://www.tennisexplorer.com/match-detail/?id=2188341
+ 80   https://www.tennisexplorer.com/match-detail/?id=2189011
+ 81   https://www.tennisexplorer.com/match-detail/?id=2189009
+ 82   https://www.tennisexplorer.com/match-detail/?id=2188899
+ 83   https://www.tennisexplorer.com/match-detail/?id=2188829
+ 84   https://www.tennisexplorer.com/match-detail/?id=2188903
+ 85   https://www.tennisexplorer.com/match-detail/?id=2188797
+ 86   https://www.tennisexplorer.com/match-detail/?id=2188775
+ 87   https://www.tennisexplorer.com/match-detail/?id=2188791
+ 88   https://www.tennisexplorer.com/match-detail/?id=2188905
+ 89   https://www.tennisexplorer.com/match-detail/?id=2188811
+ 90   https://www.tennisexplorer.com/match-detail/?id=2188845
+ 91   https://www.tennisexplorer.com/match-detail/?id=2188767
+ 92   https://www.tennisexplorer.com/match-detail/?id=2188749
+ 93   https://www.tennisexplorer.com/match-detail/?id=2188517
+ 94   https://www.tennisexplorer.com/match-detail/?id=2188799
+ 95   https://www.tennisexplorer.com/match-detail/?id=2188817
+ 96   https://www.tennisexplorer.com/match-detail/?id=2188897
+ 97   https://www.tennisexplorer.com/match-detail/?id=2188847
+ 98   https://www.tennisexplorer.com/match-detail/?id=2188879
+ 99   https://www.tennisexplorer.com/match-detail/?id=2188901
+100   https://www.tennisexplorer.com/match-detail/?id=2188545
+101   https://www.tennisexplorer.com/match-detail/?id=2188839
+102   https://www.tennisexplorer.com/match-detail/?id=2188343
+103   https://www.tennisexplorer.com/match-detail/?id=2188821
+104   https://www.tennisexplorer.com/match-detail/?id=2188547
+105   https://www.tennisexplorer.com/match-detail/?id=2188801
+106   https://www.tennisexplorer.com/match-detail/?id=2188893
+107   https://www.tennisexplorer.com/match-detail/?id=2188769
+108   https://www.tennisexplorer.com/match-detail/?id=2188519
+109   https://www.tennisexplorer.com/match-detail/?id=2188815
+110   https://www.tennisexplorer.com/match-detail/?id=2189125
+111   https://www.tennisexplorer.com/match-detail/?id=2189123
+112   https://www.tennisexplorer.com/match-detail/?id=2189121
+113   https://www.tennisexplorer.com/match-detail/?id=2190121
+114   https://www.tennisexplorer.com/match-detail/?id=2189115
+115   https://www.tennisexplorer.com/match-detail/?id=2189117
+116   https://www.tennisexplorer.com/match-detail/?id=2189127
+117   https://www.tennisexplorer.com/match-detail/?id=2190175
+118   https://www.tennisexplorer.com/match-detail/?id=2189109
+119   https://www.tennisexplorer.com/match-detail/?id=2189111
+120   https://www.tennisexplorer.com/match-detail/?id=2189113
+121   https://www.tennisexplorer.com/match-detail/?id=2188859
+122   https://www.tennisexplorer.com/match-detail/?id=2188857
+123   https://www.tennisexplorer.com/match-detail/?id=2188861
+124   https://www.tennisexplorer.com/match-detail/?id=2189155
+125   https://www.tennisexplorer.com/match-detail/?id=2189157
+126   https://www.tennisexplorer.com/match-detail/?id=2189153
+127   https://www.tennisexplorer.com/match-detail/?id=2189151
+128   https://www.tennisexplorer.com/match-detail/?id=2189149
+129   https://www.tennisexplorer.com/match-detail/?id=2189079
+```
+
+<sub>[printed with `print('\n'.join(f'{i:>3}   https://www.tennisexplorer.com{a}' for i, a in enumerate(col1)))`]</sub>
