@@ -1,0 +1,400 @@
+---
+title: "What is going on? (Attemp at scraping multiple pages)"
+site: stackoverflow
+question_id: 74411153
+answer_id: 74418899
+url: https://stackoverflow.com/a/74418899
+author: Driftr95 (me)
+author_url: https://stackoverflow.com/users/6146136
+answered: 2022-11-13T06:16:29Z
+last_edited: 2022-11-13T06:22:11Z
+revisions: 2
+revision_history: https://stackoverflow.com/posts/74418899/revisions
+accepted: false
+score: 0
+chapter: C7
+chapter_title: "JavaScript-rendered pages: Selenium and friends"
+cluster: scrape-js-rendered-selenium
+helpers_referenced: []
+license: my own text and code (also published on Stack Overflow under CC BY-SA 4.0)
+retrieved_at: 2026-10-12T16:14:00Z
+content_sha256: 2ed73e9495bd6e2c23a0db4e7cc7af3fe2264bb4282dcf9931ef7545591e556b
+commit_dated: answered (the commit holds the text as retrieved, i.e. the last revision, not the first)
+status: as posted
+---
+
+# My answer — 2022-11-13
+
+Posted by me ([Driftr95](https://stackoverflow.com/users/6146136)) on Stack Overflow, <https://stackoverflow.com/a/74418899>, 2022-11-13, last edited 2022-11-13; score 0. Text as retrieved 2026-10-12.
+
+<sub>Not sure you still need it, but this is specifically in response to </sub>
+> <sub> Hey @Driftr95 I tried the script on a new IP address and nothing prints again? Do you know the problem? Script is here: pastebin.com/V057zv3a</sub> 
+
+<br>
+
+Your [selector](https://facelessuser.github.io/soupsieve/selectors/) and `find_all`  arguments still don't look quite right. Here's an edited version that uses [`HTMLSession`](https://requests.readthedocs.io/projects/requests-html/en/latest/) (because I'm not really good at `requests` beyond the very basics, and I couldn't fetch the right html with it):
+```python
+from requests_html import HTMLSession
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+import time
+
+url = "https://www.gumtree.com/search?search_category=all&q=ferrari"  
+maxTries = 6 # or as you prefer
+pageTryCt = 0
+
+while url: 
+    print('', end=url)
+    response = HTMLSession().get(url)
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    # you can use html.parser but you probably need to have html5lib atleast installed
+
+    name = soup.find_all("h2", class_="listing-title") # h2 not div
+    price = soup.find_all("strong", class_="h3-responsive") # specify class_
+
+    next_page = soup.select_one("li.pagination-next > a:not(.pagination-disabled)") 
+    # class is pagination-next not pagination-page
+    # add :not(.pagination-disabled) to exclude disabled button (on last page)
+
+    if name and price: print('')
+    for p, n in zip(price, name):
+        print(f'{p.text.strip():>10}   {n.text.strip()}') # just to line up
+
+    if next_page:
+        next_url = next_page.get("href")
+        url = urljoin(url, next_url)
+
+        pageTryCt = 0
+        time.sleep(3)
+        print('\n') # just adding space to separate pages
+    else:
+        if pageTryCt < maxTries and len(price+name) == 0:
+            pageTryCt += 1 
+            print('', end=f'\r[after {45*pageTryCt}sec wait] ')
+            time.sleep(45*pageTryCt)
+        else: url = None
+```
+(I print some extra things, and the print format is change a bit for the "rows" and you can change/remove any of that, but please pay attention to the comments.)
+
+It still takes multiple tries for some pages, and you might have to adjust the wait times and `maxTries`, but the output I got was:
+
+```lang-none
+https://www.gumtree.com/search?search_category=all&q=ferrari
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £43,998   1997 R FERRARI 456 5.5 GTA 2D 442 BHP
+   £79,995   2013 FERRARI CALIFORNIA 2+ 2DR F1 CONVERTIBLE 30/30 MODEL + STUNNING
+  £329,995   Ferrari 458 4.5 Spider Auto Seq 2dr
+  £189,991   2008 08 FERRARI 430 4.3 SCUDERIA 2D 510 BHP RARE NOVITEC CAR
+   £60,990   Ferrari 360 3.6 Spider 2dr Petrol
+   £79,950   Ferrari F355 GTS RHD
+   £89,950   Ferrari F355 Spider RHD
+   £77,850   2011 Ferrari California 4.3 F1 DCT Euro 5 2dr CONVERTIBLE Petrol Automatic
+  £199,500   2016 Ferrari 488 3.9 SPIDER 2d 660 BHP Convertible Petrol Semi Automatic
+  £129,995   2016 Ferrari FF V12 Petrol Automatic
+  £129,950   2014 Ferrari FF 2dr Auto HATCHBACK Petrol Automatic
+  £268,830   2021 Ferrari F8 Spider Auto 2 Door Petrol Automatic
+  £174,950   2020 Ferrari Portofino GT 2dr Auto Convertible Petrol Automatic
+   £79,995   1998 Ferrari 355 3.5 BERLINETTA F1 2d 375 BHP Coupe Petrol Automatic
+   £74,950   1989 Ferrari 328 GTS 2dr Sports Petrol Manual
+  £105,000   1998 Ferrari F355 GTS 2dr Sports Petrol Automatic
+  £184,995   2008 Ferrari 430 4.3 Scuderia F1 Euro 4 2dr COUPE Petrol Automatic
+  £152,980   2019 Ferrari Portofino 3.8T V8 F1 DCT Euro 6 (s/s) 2dr COUPE Petrol Automatic
+   £59,990   2004 04 FERRARI 360 3.6 SPIDER 2D 400 BHP
+   £87,000   2006 Ferrari 599 GTB Fiorano F1 2dr COUPE Petrol Automatic
+  £389,830   2020 Ferrari 812GTS 2dr Auto Cabriolet Petrol Automatic
+   £77,995   2003 Ferrari 575M F1 Coupe Petrol Automatic
+  £119,991   1996 P FERRARI 355 3.5 GTS SPIDER - IMACULATE THROUGHOUT
+  £189,950   2017 Ferrari 488 Spider 2dr Auto Convertible Petrol Automatic
+  £184,980   2019 Ferrari 488 3.9T V8 GTB F1 DCT Euro 6 (s/s) 2dr COUPE Petrol Automatic
+
+
+https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=2
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+  £149,995   Ferrari 488 3.9T V8 GTB F1 DCT (s/s) 2dr
+   £64,950   Ferrari 360 Modena F1
+  £178,830   2017 Ferrari 488 488 Spider Auto Convertible Petrol Automatic
+  £184,830   2016 Ferrari 488 Spider 2dr Auto Convertible Petrol Automatic
+  £114,900   2017 Ferrari CALIFORNIA T F1 Convertible Auto Convertible Petrol Automatic
+   £68,950   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 2D 460 BHP MAGNERIDE! HUGE SPEC!
+  £339,850   2019 Ferrari 488 GTB 2dr Auto Coupe Petrol Automatic
+   £89,950   Ferrari 308 GTS RHD
+  £183,830   2021 Ferrari Roma Roma Auto 2 Door Petrol Automatic
+   £72,999   2004 Ferrari 360 Spider F1 **Only 27,000 Miles - Stunning Example - FSH**
+  £162,495   2018 Ferrari GTC4 LUSSO T 2dr Auto Coupe Petrol Automatic
+  £269,950   2019 Ferrari 812 Superfast V12 Coupe Petrol Automatic
+   £65,000   2007 Ferrari 599 GTB FIORANO COUPE PETROL Manual
+  £157,830   2016 Ferrari 488 GTB 488 GTB Auto 2 Door Petrol Automatic
+   £77,990   1983 FERRARI 308 GTSI QUATTROVALVOLE // 2.9L V8 // TARGA // PX SWAP
+   £82,980   2013 Ferrari California 4.3 F1 DCT Euro 5 2dr CONVERTIBLE Petrol Automatic
+   £50,000   1978 Ferrari 308 GT4 DINO PETROL Manual
+  £149,830   2013 Ferrari 458 458 Italia Auto Coupe Petrol Automatic
+    £1,900   Ferrari 488 3.9 Auto GTB BUY FOR ONLY £1900 P/M, FINANCE, PCP WITH BALLOON
+   £85,000   1991 Ferrari 348 TS PETROL Manual
+   £72,500   2011 Ferrari California 2+ 2dr F1 Petrol
+   £89,983   2014 Ferrari California 2+ 2dr F1 Auto Convertible Petrol Automatic
+  £169,830   2016 Ferrari 488 Spider 2dr Auto Convertible Petrol Automatic
+   £84,990   2013 Ferrari California 4.3 2 PLUS 2 2d 490 BHP CONVERTIBLE Petrol Automatic
+  £419,830   2022 Ferrari 812 GTS 812 GTS Auto 2 Door Petrol Automatic
+
+
+https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=3
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+   £89,850   Ferrari California 3.8 V8 T Convertible 2dr Petrol F1 DCT Euro 6 (560 ps)
+  £139,950   2012 12 FERRARI 458 4.5 ITALIA DCT 2D 570 BHP
+   £56,999   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 2D 460 BHP
+  £314,830   2019 Ferrari 488 VS 488 Pista Auto 2 Door Petrol Automatic
+  £103,950   2015 Ferrari California V8 T Convertible Petrol Automatic
+  £169,980   2017 Ferrari 488 3.9T V8 GTB F1 DCT Euro 6 (s/s) 2dr COUPE Petrol Automatic
+  £142,880   Ferrari 458 4.5 Spider Auto Seq 2dr Petrol
+   £99,991   1999 T FERRARI 355 3.5 GTS TARGA 2D 375 BHP
+  £144,990   2013 Ferrari 458 Italia Coupe Petrol Automatic
+   £79,995   2003 Ferrari 575M Petrol Manual
+  £239,980   2018 Ferrari 812 Superfast 6.5 V12 F1 DCT Euro 6 (s/s) 2dr COUPE Petrol Automati
+   £74,990   2012 Ferrari California 2 Plus 2 Convertible Petrol Manual
+  £294,980   2020 Ferrari 812 Superfast 6.5 V12 F1 DCT Euro 6 (s/s) 2dr COUPE Petrol Automati
+  £110,000   FERRARI F430 SPIDER Black AUTO Petrol, 2007
+   £73,000   1982 Ferrari 308 GTSi Coupe Petrol Manual
+  £129,999   2022 Ferrari 458 4.5 HELE V8 Italia F1 DCT Euro 5 (s/s) 2dr Petrol Automatic
+   £98,718   2012 Ferrari FF V12 F1 DCT 4WD Auto Coupe Petrol Automatic
+  £152,445   2019 Ferrari Portofino 3.8T V8 F1 DCT Euro 6 (s/s) 2dr CONVERTIBLE Petrol Automa
+   £79,980   2002 Ferrari 360 3.6 Modena F1 2dr Petrol Automatic
+   £98,950   2009 Ferrari F430 F1 Coupe Petrol Manual
+  £399,950   2022 Ferrari 812 GTS 2dr Petrol
+  £409,995   2022 Ferrari SF90 Stradale 4.0T V8 7.9kWh F1 DCT 4WD Euro 6 (s/s) 2dr COUPE Petr
+   £67,500   1986 FERRARI 328 GTS TARGA 3.2 Manual Coupe with 288 GTO BODY
+   £89,990   2009 Ferrari F430 F1 Coupe COUPE Petrol Automatic
+   £74,950   2010 Ferrari F430 F430 Manual
+
+
+https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=4
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+  £109,800   2015 Ferrari California T 2dr Auto Convertible Petrol Automatic
+   £89,950   Ferrari F430 Spider F1
+   £82,950   Ferrari F430 Spider F1 RHD
+   £89,950   1998 S FERRARI 550 5.5 MARANELLO 2D 487 BHP
+   £89,990   1999 Ferrari 355 GTS TARGA Petrol Automatic
+  £199,950   Ferrari 430 Scuderia RHD
+   £87,950   Ferrari California 2 PLUS 2 30
+  £164,850   2013 Ferrari 458 Spider 2dr Auto Convertible Petrol Automatic
+  £395,000   1974 Ferrari 365 GT4 Berlinetta Boxer
+   £79,500   2013 13 FERRARI CALIFORNIA 4.3 2 PLUS 2 2D 490 BHP
+  £224,830   2020 Ferrari F8 Tributo Auto 2 Door Petrol Automatic
+  £164,830   2013 Ferrari F12 Berlinetta 2dr Auto Coupe Petrol Automatic
+  £189,830   2018 Ferrari GTC4 LUSSO GTC4 Lusso Auto Coupe Petrol Automatic
+  £169,950   2013 Ferrari 458 Spider 2dr Auto Convertible Petrol Automatic
+  £377,900   2016 Ferrari 458 Speciale 2dr Auto Coupe Petrol Automatic
+  £399,830   2021 Ferrari SF90 SF90 Stradale 2 Door Petrol Plug-in Hybrid Manual
+   £65,000   2019 Ferrari F430 RACING SPEC NOVITEC STYLING Petrol Automatic
+   £34,999   1983 Ferrari Mondial Quattrovalvole UK RHD Coupe Petrol Manual
+  £149,900   2019 Ferrari Portofino GT 2dr Auto Convertible Petrol Automatic
+  £166,000   2017 Ferrari 488 Spider 2dr Auto Convertible Petrol Automatic
+   £77,000   1999 Ferrari F355 GTS 2dr Sports Petrol Automatic
+   £82,950   Ferrari F355 Berlinetta RHD
+  £259,950   2018 Ferrari 812 SUPERFAST 2dr Auto Coupe Petrol Automatic
+  £168,950   2019 Ferrari Portofino GT 2dr Auto Convertible Petrol Automatic
+  £162,850   2017 Ferrari 488 GTB 2dr Auto Coupe Petrol Automatic
+
+
+https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=5
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+  £214,550   2021 Ferrari Portofino GT 2dr Auto Convertible Petrol Automatic
+  £155,830   2018 Ferrari Portofino GT 2dr Auto Convertible Petrol Automatic
+  £169,950   Ferrari 575M Maranello RHD
+  £178,830   2018 Ferrari 488 488 Spider Auto Convertible Petrol Automatic
+  £389,830   2021 Ferrari SF90 SF90 Stradale Coupe Petrol Plug-in Hybrid Manual
+  £156,900   2016 Ferrari 488 GTB 2dr Auto Coupe Petrol Automatic
+  £226,400   2022 Ferrari Portofino GT 2dr Auto Convertible Petrol Automatic
+   £64,995   FERRARI 328 328 GTS Pre ABS 1988
+  £199,830   2017 Ferrari 488 Spider 2dr Auto Convertible Petrol Automatic
+   £94,830   2016 Ferrari California California T Auto Convertible Petrol Automatic
+  £108,990   2009 09 FERRARI 430 4.3 SPIDER F1 2D 479 BHP
+  £109,995   Ferrari F430 4.3 V8 Spider F1
+  £109,950   Ferrari F430 4.3 ( 490bhp ) Spider F1
+  £999,990   2008 Ferrari 250 GT California Spyder SWB PETROL Manual
+  £147,830   2011 Ferrari 458 458 Italia Auto Coupe Petrol Automatic
+    £1,000   VALUATION SERVICE ON KIT CARS REPLICA DAX AC COBRA RUSH ULTIMA GTR AK MK GD
+   £99,950   Ferrari 308 GTS QV RHD
+   £94,994   2015 Ferrari California 3.8 V8 T F1 DCT (s/s) 2dr CONVERTIBLE Petrol Automatic
+   £57,950   Ferrari 360 Spider F1
+  £204,830   2021 Ferrari Roma ROMA S-A 3.8 611BHP Auto 2 Door Petrol Automatic
+   £79,995   2007 Ferrari F430 4.3 Spider F1 2dr COUPE Petrol Automatic
+  £119,950   Ferrari 550 Maranello RHD
+   £90,000   2011 Ferrari FF 6.3 Auto Seq 3dr HATCHBACK Petrol Automatic
+  £129,995   2005 Ferrari F430 4.3 Spider 2dr CONVERTIBLE Petrol Manual
+  £151,999   2018 FERRARI PORTOFINO 3.9 BCA 2D 592 BHP
+
+
+[after 135sec wait] https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=6
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+  £151,999   2018 FERRARI PORTOFINO 3.9 BCA 2D 592 BHP
+  £459,990   2020/20 Ferrari 488 Pista Piloti
+   £74,950   Ferrari 360 Spider F1
+   £79,995   2003 Ferrari 360M Spider F1 2dr Convertible PETROL Manual
+  £279,990   2022 Ferrari F8 2022 22 Ferrari 3.9 V8 F8 Spider Semi Auto Convertible Petrol Au
+  £149,995   2011 Ferrari 599 GTB Fiorano F1 2dr COUPE PETROL Manual
+   £69,950   Ferrari F355 Berlinetta F1 RHD
+  £149,995   Ferrari 458 4.5 Italia Auto Seq 2dr
+   £99,950   Ferrari F355 Berlinetta RHD NOW SOLD MORE REQUIRED
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+   £89,950   Ferrari 550 Maranello RHD
+   £71,950   Ferrari 360 Spider
+  £168,500   2016 Ferrari 488 Spider 2dr Auto Convertible Petrol Automatic
+  £159,990   Ferrari Portofino 3.8T V8 F1 DCT Euro 6 (s/s) 2dr Petrol
+   £69,995   2011 Ferrari California 2+ 2dr F1 Convertible Petrol Automatic
+   £92,980   Ferrari 599 6.0 V12 GTB Fiorano F1 2dr Petrol
+   £63,950   Ferrari 612 Scaglietti F1
+  £199,950   Ferrari F12berlinetta AB
+   £76,000   2010 Ferrari California 2+ 2dr F1 CONVERTIBLE Petrol Manual
+  £117,450   Ferrari 458 4.5 Italia Auto 2dr Coupe. Very High Spec
+   £65,000   2006 Ferrari 612 Scaglietti 2dr F1A COUPE Petrol Automatic
+   £69,995   2004 Ferrari 360M Spider F1 2dr Sports Petrol Manual
+  £187,000   2018 Ferrari 488 Spider 2dr Auto CONVERTIBLE Petrol Automatic
+   £65,950   2005 Ferrari 360
+   £49,000   1998 Ferrari 456 GT Petrol Manual
+
+
+https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=7
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+  £130,000   2012 Ferrari 458 Italia 2dr Auto COUPE Petrol Automatic
+   £86,000   2013 Ferrari FF 2dr Auto HATCHBACK Petrol Automatic
+  £189,830   2021 Ferrari Roma 2dr Auto 2 Door Petrol Automatic
+   £99,950   2002 02 FERRARI 575M 5.7 MARANELLO 2D 515 BHP
+  £131,750   2020 Porsche 911 TARGA 4S CONVERTIBLE Petrol Manual
+  £269,830   2019 Ferrari 812 SUPERFAST 2dr Auto Coupe Petrol Automatic
+  £234,995   Ferrari 488 3.9T V8 GTB F1 DCT (s/s) 2dr
+   £74,948   Ferrari 360 3.6 Spider 2dr Petrol
+  £178,995   2018 18 FERRARI 488 3.9 GTB 2D 660 BHP
+   £74,995   2010 Ferrari California 2+ 2dr F1 CONVERTIBLE Petrol Manual
+  £107,991   1998 S FERRARI 355 3.5 GTS TARGA 2D 375 BHP
+  £169,830   2016 Ferrari 488 488 Spider Auto Convertible Petrol Automatic
+  £169,995   2017 67 FERRARI 488 3.9 GTB 2D 660 BHP
+  £174,830   2015 Ferrari 458 Spider 2dr Auto Convertible Petrol Automatic
+   £89,890   Ferrari California T
+  £165,830   2017 Ferrari 488 GTB 488 GTB Auto Coupe Petrol Automatic
+   £72,990   2013 Ferrari California 2+ 2dr F1 Auto Convertible Petrol Automatic
+  £273,830   2021 Ferrari F8 F8 SPIDER S-A 3.9 Auto 2 Door Petrol Automatic
+  £109,991   2017 61 FERRARI 6.3 FF
+   £59,995   2003 Ferrari 360 3.6 Spider 2dr Petrol Manual
+  £409,830   2021 Ferrari SF90 SF90 Assetto Fiorano Auto 2 Door Petrol Plug-in Hybrid Automat
+   £76,995   2011 Ferrari California 4.3 F1 DCT Euro 5 2dr CONVERTIBLE Petrol Automatic
+  £189,995   2019 Ferrari 488 3.9T V8 GTB F1 DCT (s/s) 2dr COUPE Petrol Automatic
+  £269,995   2014 Ferrari 458 4.5 Speciale 2dr Petrol Automatic
+   £97,980   2016 Ferrari California 3.8 V8 T F1 DCT Euro 6 2dr CONVERTIBLE Petrol Automatic
+
+
+https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=8
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+  £122,500   2010 Ferrari 599 6.0 V12 GTB Fiorano F1 Euro 4 2dr COUPE Petrol Automatic
+   £61,995   2009 Ferrari California 4.3 F1 DCT Euro 5 2dr Convertible Petrol Automatic
+  £209,830   2004 Ferrari 360 CHALLENGE STRADALE Challenge Stradale Auto 3 door Petrol Automa
+  £749,990   2015/15 Ferrari 458 Speciale Aperta
+   £64,880   2001 (X) FERRARI 360 3.6 MODENA F1 2DR
+  £139,995   2012 Ferrari 458 4.5 Italia Auto Seq 2dr COUPE Petrol Automatic
+   £59,995   1997 Ferrari 456 GTA - 6700 miles
+  £194,995   2021 Ferrari Roma 3.8T V8 F1 DCT Euro 6 (s/s) 2dr COUPE Petrol Automatic
+   £99,950   2015 Ferrari California 3.8 V8 T F1 DCT Euro 6 (s/s) 2dr CONVERTIBLE Petrol Auto
+  £399,990   2022 Ferrari 812 2022 22 Ferrari 812 6.5 V12 GTS Spider Semi Auto Convertible Pe
+   £56,475   1993 Ferrari 348 3.4 ts 2dr Coupe Petrol Manual
+  £104,995   2015 Ferrari California T 2dr Auto CONVERTIBLE Petrol Automatic
+   £62,950   Ferrari 612 Scaglietti F1
+  £185,000   2013 Ferrari F12 Berlinetta 2dr Auto COUPE Petrol Automatic
+   £89,995   Ferrari F355 Berlinetta 3.5 V8 Manual 1996 M2.7 /// 39k Miles
+   £62,450   2000 Ferrari 360 3.6 MODENA 2d 400 BHP Coupe Petrol Manual
+  £120,000   2001 Ferrari 550 LHD manual Petrol
+  £119,995   Ferrari Testarossa 4.9 2dr
+  £149,995   Ferrari 458 4.5 Spider Auto Seq 2dr
+   £79,995   2016 Ferrari F430 4.3 F1 2dr COUPE Petrol Automatic
+  £349,995   Ferrari 488 Pista 3.9T V8 F1 DCT Euro 6 (s/s) 2dr
+   £60,000   1989 Ferrari 328 GTS Manual
+   £89,990   2006 Ferrari 430 4.3 SPIDER 2d 479 BHP Convertible Petrol Automatic
+   £67,995   2003 Ferrari 360 SPIDER F1 - STUNNING - CAPRISTO EXHAUST - BEST ONE FOR SALE? Co
+   £74,995   2006 Ferrari F430 4.3 F1 2dr COUPE Petrol Automatic
+
+
+https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=9
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+  £139,995   Ferrari 458 4.5 Spider F1 DCT Euro 5 2dr
+   £85,000   1986 Ferrari 412 MANUAL PETROL Manual
+   £89,995   2013 Ferrari California 4.3 V8 30 F1 DCT 2dr CONVERTIBLE Petrol Automatic
+  £175,999   2016 Ferrari 488 3.9T V8 Spider F1 DCT Euro 6 (s/s) 2dr CONVERTIBLE Petrol Autom
+   £94,000   2000 Ferrari 360M Modena 2dr F1 Coupe Petrol Manual
+   £65,000   1996 Ferrari 550 MARANELLO PETROL Manual
+  £135,995   2011 Ferrari 458 DCT Coupe Petrol Automatic
+  £146,995   2019 69 Ferrari Portofino 3.8T V8 GT Convertible 1 Owner Tour De France Blue F1
+   £89,995   2007 Ferrari F430 4.3 Spider F1 DCT 2dr CONVERTIBLE Petrol Automatic
+   £76,500   Ferrari F430 4.3 F1 2dr Petrol
+  £299,995   1973 Ferrari Dino PETROL Manual
+  £197,950   2015 Ferrari 458 Spider - A Outstanding Example - Please Read Our Comments Semi
+  £159,995   2014 Ferrari 458 DCT SPIDER Convertible Petrol Automatic
+   £42,990   2017 BMW M3 COMPETITION 4dr DCT INDIVIDUAL FERRARI ROSSO RED 1 OF 93+CARBON PACK
+   £99,950   1978 FERRARI MCBURNIE REPLICA 250 GTO 250 GTO McBurnie 260z Replica Rebuilt g
+   £99,995   Ferrari 456 GTA Coupe
+  £169,950   2013 Ferrari F12 Berlinetta Coupe Petrol Automatic
+   £99,995   Ferrari 456 GTA Coupe
+   £72,950   Ferrari 360 Spider
+   £84,950   Ferrari F355 Berlinetta F1 RHD
+   £29,995   FERRARI 250 SWB ROADSTER TRIBUTE Z3 - MULTI MILLION LOOKS - MODERN CLASSIC - PX
+   £18,995   2016 66 BMW 435D XDRIVE M SPORT GRAN COUPE 313PS + FERRARI RED + INDIVIDUAL
+   £44,995   1997 Ferrari 456 GTA RHD
+   £79,950   Ferrari F430
+   £80,000   2008 Ferrari 599 GTB FIORANO HGTE PETROL Manual
+
+
+https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=10
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+  £100,000   1976 Ferrari 308 VETRORESINA PETROL Manual
+   £65,000   2020 Audi RS4 Avant 2.9 TFSI V6 Tiptronic quattro Euro 6 (s/s) 5dr ESTATE Petrol
+  £379,990   2021/21 Ferrari SF90 Stradale
+   £94,950   Ferrari F355 GTS F1 RHD
+   £87,950   Ferrari F430 F1 Spider
+  £104,995   1999 Ferrari 355 F1 GTS 2dr Petrol Automatic
+   £76,950   Ferrari California 2 PLUS 2
+   £99,995   2020 Ferrari California 3.8 V8 T F1 DCT Euro 6 2dr COUPE Petrol Automatic
+   £69,995   2005 Ferrari 612 5.7 Scaglietti FI 2dr COUPE Petrol Automatic
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £66,666   Ferrari 360 Modena F1 ROSSO SEATS. F430 WHEELS. FULLY LOADED. FULLY RESTORED. LOOKS THE BEAST
+    £3,800   Ferrari 295 GTB
+   £75,000   Ferrari F355
+   £74,500   *FERRARI CALIFORNIA 4.3L V8 – ROSSO CORSA – 22K MILES– FFSH - IMMACULATE* ** WARRANTY 25/10/2023**
+   £16,500   Ferrari F355 Berlinetta Replica
+   £33,000   ☆BMW 340i individual ☆FERRARI RED F30 like M3 F80. 3 SERIES
+  £119,895   2017 McLaren 570S V8 SSG Convertible Petrol Manual
+  £167,000   2020 Ferrari Portofino T V8 Convertible Petrol Automatic
+  £167,000   Ferrari 3.8T V8 Convertible 2dr Petrol F1 DCT (s/s) (600 ps)
+
+
+[after 225sec wait] https://www.gumtree.com/search?search_category=cars&search_location=uk&q=ferrari&page=10
+   £88,500   2011 61 FERRARI FF 6.3 V12 4WD 660bhp with very high factory specification
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+  £100,000   1976 Ferrari 308 VETRORESINA PETROL Manual
+   £65,000   2020 Audi RS4 Avant 2.9 TFSI V6 Tiptronic quattro Euro 6 (s/s) 5dr ESTATE Petrol
+  £379,990   2021/21 Ferrari SF90 Stradale
+   £94,950   Ferrari F355 GTS F1 RHD
+   £87,950   Ferrari F430 F1 Spider
+  £104,995   1999 Ferrari 355 F1 GTS 2dr Petrol Automatic
+   £76,950   Ferrari California 2 PLUS 2
+   £99,995   2020 Ferrari California 3.8 V8 T F1 DCT Euro 6 2dr COUPE Petrol Automatic
+   £69,995   2005 Ferrari 612 5.7 Scaglietti FI 2dr COUPE Petrol Automatic
+   £77,500   2011 11 FERRARI CALIFORNIA 4.3 2 PLUS 2 Auto 460bhp only 14,750 miles in White
+   £66,666   Ferrari 360 Modena F1 ROSSO SEATS. F430 WHEELS. FULLY LOADED. FULLY RESTORED. LOOKS THE BEAST
+    £3,800   Ferrari 295 GTB
+   £75,000   Ferrari F355
+   £74,500   *FERRARI CALIFORNIA 4.3L V8 – ROSSO CORSA – 22K MILES– FFSH - IMMACULATE* ** WARRANTY 25/10/2023**
+   £16,500   Ferrari F355 Berlinetta Replica
+   £33,000   ☆BMW 340i individual ☆FERRARI RED F30 like M3 F80. 3 SERIES
+  £119,895   2017 McLaren 570S V8 SSG Convertible Petrol Manual
+  £167,000   2020 Ferrari Portofino T V8 Convertible Petrol Automatic
+  £167,000   Ferrari 3.8T V8 Convertible 2dr Petrol F1 DCT (s/s) (600 ps)
+
+```
