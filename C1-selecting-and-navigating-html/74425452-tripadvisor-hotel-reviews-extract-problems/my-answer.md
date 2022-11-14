@@ -1,0 +1,165 @@
+---
+title: "TripAdvisor Hotel Reviews Extract Problems"
+site: stackoverflow
+question_id: 74425452
+answer_id: 74426247
+url: https://stackoverflow.com/a/74426247
+author: Driftr95 (me)
+author_url: https://stackoverflow.com/users/6146136
+answered: 2022-11-14T02:03:49Z
+last_edited: never
+revisions: 1
+revision_history: https://stackoverflow.com/posts/74426247/revisions
+accepted: false
+score: 1
+chapter: C1
+chapter_title: "Selecting and navigating HTML"
+cluster: scrape-static-html-bs4
+helpers_referenced: []
+license: my own text and code (also published on Stack Overflow under CC BY-SA 4.0)
+retrieved_at: 2026-10-12T16:14:00Z
+content_sha256: 6adc6339833ac6d244bb923442b5d2cfca84739d6b9688d7cb8672dbf3596fd0
+commit_dated: answered (the commit holds the text as retrieved, i.e. the last revision, not the first)
+status: as posted
+---
+
+# My answer — 2022-11-14
+
+Posted by me ([Driftr95](https://stackoverflow.com/users/6146136)) on Stack Overflow, <https://stackoverflow.com/a/74426247>, 2022-11-14; score 1. Text as retrieved 2026-10-12.
+
+I can't tell exactly which data you're trying to retrieve, but as a rule of thumb with scraping, try to avoid using attribute/values that don't look human-readable as they're usually randomly generated and tend to change with every load. The individual reviews seem to be in `div` containers [like this](https://i.sstatic.net/lSayP.png) with a `data-test-target` attribute and the review content is nested within in a `div` with a `data-reviewid` attribute. You could print the texts with
+```python
+for t in soup.find_all(lambda t: t.name=='div' and t.get('data-test-target')):
+    if t.find(lambda c: c.name=='div' and c.get('data-reviewid')): print(t.text)
+```
+but it's probably more convenient to just use `div[data-test-target]:has(>div[data-reviewid])` as [selector](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#css-selectors) instead.
+
+---
+
+If you want to clean up the text before printing a bit, you could do something like 
+```python
+print((f'\n\n{"-"*130}\n\n').join([f'[Review ID: {i}] --> [{u}]\n{r}' for i, u, r in [(
+    rev.get("data-reviewid"), rev.parent.div.get_text(" "), rev.get_text("\n", strip=True) 
+) for rev in soup.select('div[data-test-target] > div[data-reviewid]')]]))
+```
+ -- it gives me the output:
+```lang-none
+[Review ID: 863802993] --> [pmudawattage  wrote a review Oct 2022 Colombo, Sri Lanka 91  contributions 6  helpful votes]
+A great place for a large crowd to relax
+More than 200 of us went to the Sigiriya Village Hotel on our company trip. We highly appreciate the systematic arrangement that was present from the entrance to every part of the hotel, throughout the duration of our stay. Everything was organised at the requested times and the room arrangement was good too; there were no complaints from any of the rooms.  Special mention to the staff who attended immediately when one of the kids fell sick and helped the parents take the kid to the hospital, we highly appreciate this wonderful gesture and the way everything was handled with great professionalism.  The hotel is very spacious. It was easy to reach the Sigiriya rock as well. The food was delicious and the staff was friendly and helpful.  Special thanks to the GM, Mr. Gamini for
+…
+Read more
+Date of stay:
+October 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 863756215] --> [nisansala a  wrote a review Oct 2022]
+Family visit
+This hotel excellent and very good place.we enjoy all the family and thnx helping us .thank u sigiri village for excellent advantage give us.and meal is very good buffet is very good and thank u very mich shslika thank u very much supporting us
+Read more
+Date of stay:
+October 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 863755642] --> [Sithmi Perera  wrote a review Oct 2022 1  contribution]
+Family Vacation
+Highly recommended for a family vacation. The staff, food and the view is really good here. Rooms are tidy and clean and the food is really delicious. We enjoyed alot and hope to visit again. Maleesha the staff member she is really friendly and kind to everyone. Highly recommend this place to everyone who is looking for a great place to spend the vacation.
+Read more
+Date of stay:
+October 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 863755240] --> [Prasanthika G  wrote a review Oct 2022]
+Annual Get together
+Good and excellent service .. they have and amazing view of the sigiriya rock from the pool.. overall its really good and its a good choice for value .. The staff is really good including Maleesha, shalika, danushka and sajee ...
+Read more
+Date of stay:
+October 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 863755019] --> [Shiron W  wrote a review Oct 2022]
+Get together
+It was really a nice experience, the games conducted by animation with their leader Shali was really fun.. Everything including the room and other amenities were really good, and the staff was also really kind and friendly...
+Read more
+Date of stay:
+October 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 863747253] --> [alanka f  wrote a review Oct 2022 1  contribution]
+Akbar Brothers Annual Trip
+Highly Recommend ❗️❗️❗️❗️  The Best hotel i have ever Travelled the location is fantastic  Staff Services are Soooo Good  Special Thanks To  Maleesha Sajee Shalika Dhanushka ♥️  and the View is priceless   All the Best Guys
+Read more
+Date of stay:
+October 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 863746426] --> [THENX O  wrote a review Oct 2022 Colombo, Sri Lanka]
+Annual Get together
+We Had our company get together in Sigiriya Village hotel. It was a marvelous and fascinating experience in here for all of us, the food was all good and the service is really great, also the staff is so friendly and kind. The view from the pool is spectacular, we can get a great view of the sigiriya rock.. Overall everything is perfect, and you should also visit this fascinating place..
+Read more
+Date of stay:
+October 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 863745619] --> [ranshana  wrote a review Oct 2022 1  contribution]
+Annual trip 2022
+Hi, starting off with scenery the hotel is amazing covered with greeneries which gives a high value to green life aspect. secondly the staffs and the hotel management was quite good. Next the food was Delicious. I would like to thank all the staff and the management and I myself enjoyed a lot. And I would like to thank Maleesha for the great service she provided.
+Read more
+Date of stay:
+October 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 861920241] --> [Charith B  wrote a review Sept 2022 Colombo, Sri Lanka 233  contributions 70  helpful votes]
+Best resort closest to the lions rock
+Wonderful experience next to Sigiriya. In fact the best hotel that is closest to the rock. Even after 30 years, the hotel looks great and maintenance is superb. Meals are good when set menu style, buffet is moderate. Highly recommend if you are to climb lions rock or pidurangala
+Read more
+Date of stay:
+September 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Review ID: 860492183] --> [Oshan Asela  wrote a review Sept 2022 1  contribution]
+Holiday
+Highly recommendable hotel in Sigiriya.Team at sigiriya village welcome you much pleasure and friendly. This place is one of dream holiday destinations. The very definition to hospitality is found here. Its located in a very calm,peaceful and a close to nature area near sigiriya.. The room  was very spacious and clean.This is the best hotel if you are looking for a place to stay and relax in Sigiriya. Staff was above 5 stars along with the Manager himself. Food was perfect.They had a variety items of food.srilankan and all other foods were fabulous. We fell in love with this hotel that we would definitely visit again. Thank you Sigiriya village hotel staff
+Read more
+Date of stay:
+September 2022
+This review is the subjective opinion of a Tripadvisor member and not of Tripadvisor LLC. Tripadvisor performs checks on reviews.
+Helpful
+Share
+```
