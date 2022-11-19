@@ -1,0 +1,104 @@
+---
+title: "Beautiful Soup scraping Realtor.com. Four elements have same class. How to search using data-label?"
+site: stackoverflow
+question_id: 74483760
+answer_id: 74498917
+url: https://stackoverflow.com/a/74498917
+author: Driftr95 (me)
+author_url: https://stackoverflow.com/users/6146136
+answered: 2022-11-19T09:36:25Z
+last_edited: never
+revisions: 1
+revision_history: https://stackoverflow.com/posts/74498917/revisions
+accepted: false
+score: 0
+chapter: C1
+chapter_title: "Selecting and navigating HTML"
+cluster: scrape-static-html-bs4
+helpers_referenced: []
+license: my own text and code (also published on Stack Overflow under CC BY-SA 4.0)
+retrieved_at: 2026-10-12T16:14:00Z
+content_sha256: 19992ba3e9d5f90c38d56f898ec4c6d403a0dd3def68ee1642c6ff75cf430029
+commit_dated: answered (the commit holds the text as retrieved, i.e. the last revision, not the first)
+status: as posted
+---
+
+# My answer — 2022-11-19
+
+Posted by me ([Driftr95](https://stackoverflow.com/users/6146136)) on Stack Overflow, <https://stackoverflow.com/a/74498917>, 2022-11-19; score 0. Text as retrieved 2026-10-12.
+
+While you *can* use something like *`.find('li', {'data-label': 'pc-meta-beds'})`*, I think you should look into the [`.select`](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#css-selectors) method and [CSS Selectors](https://facelessuser.github.io/soupsieve/selectors/basic/#universal-selectors) - they're awesome. 
+
+`.select_one('li[data-label="pc-meta-beds"] span[data-label="meta-value"]').text` [or just **`'li[data-label="pc-meta-beds"]'`** as the selector if you're ok with the whole text like "3 beds" instead of just "3"] should give you the number of beds.
+
+---
+
+<sub>Btw, this is not what you asked about, but it's better not to give variables names like `list`/`dict`/`bool` (especially when it's easier to just use `for l in lists...`), since these **are already names for existing data types** in python; and also, it's **safer to check** that `find`/`select` has returned something before trying to get `.text`; if it's annoying to so for every variable, you can just do it in a loop or list-comprehension since it's all to form a list anyway - something like:</sub>
+```python
+# [price, address, beds, baths, sqft, sqftlot, link]
+selectors = [
+    'div[data-label="pc-price-wrapper"]', ## can use 'div.ldp-redesign-price' 
+    'div[data-label="pc-address"]', ## can use 'div.address'
+    'li[data-label="pc-meta-beds"]', 
+    'li[data-label="pc-meta-baths"]', 
+    'li[data-label="pc-meta-sqft"]',
+    'li[data-label="pc-meta-sqftlot"]'
+]
+infoList = [ # first, selecting tags
+    ([r.select_one(s) for s in selectors], r.select_one('a[href]'))
+    for r in soup.select('li[data-testid="result-card"]')
+]# --> list of ([tags for rest of the list], hyperlink tag)
+
+infoList = [( # getting the text (or link) from selected tags
+    [(t.get_text(' ').strip() if t else None) for t in tags] + 
+    [('https://www.realtor.com'+hl.get('href')) if hl else None]
+) for tags, hl in infoList]
+
+# you can use for-loop just for printing now
+for info in infoList: print(info)
+## although, you could also: # print('\n'.join([str(info) for info in infoList]))
+```
+<sub>Using `.get_text()` instead of `.text` is *mostly* a matter of preference, however some versions of bs4 do raise an error if `.text` is tried on anything other than a NavigableString. Anyway, the output printed should be:</sub>
+```js
+['$270,000', '12009 Viking St ,  Springhill , FL   34609', '3 bed', '2 bath', '1,655 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/12009-Viking-St_Spring-Hill_FL_34609_M53100-62430']
+['$245,000', '6139 Waycross Dr ,  Springhill , FL   34606', '2 bed', '2 bath', '1,360 sqft', '0.32 acre lot', 'https://www.realtor.com/realestateandhomes-detail/6139-Waycross-Dr_Spring-Hill_FL_34606_M67332-22881']
+['$265,000', '14075 Amero Ln ,  Springhill , FL   34609', '3 bed', '2 bath', '1,085 sqft', '0.24 acre lot', 'https://www.realtor.com/realestateandhomes-detail/14075-Amero-Ln_Spring-Hill_FL_34609_M52183-50946']
+['$295,000', '5560 Baffin Cir ,  Springhill , FL   34606', '3 bed', '2.5 bath', '1,498 sqft', '0.39 acre lot', 'https://www.realtor.com/realestateandhomes-detail/5560-Baffin-Cir_Spring-Hill_FL_34606_M68652-93381']
+['$325,000', '4189 Castle Ave ,  Springhill , FL   34609', '3 bed', '2 bath', '1,412 sqft', '8,619 sqft lot', 'https://www.realtor.com/realestateandhomes-detail/4189-Castle-Ave_Spring-Hill_FL_34609_M53650-29696']
+['$450,000', '241 Sable Knoll Ct ,  Springhill , FL   34609', '4 bed', '3 bath', '2,516 sqft', '0.49 acre lot', 'https://www.realtor.com/realestateandhomes-detail/241-Sable-Knoll-Ct_Spring-Hill_FL_34609_M95197-79066']
+['$349,999', '5101 Teather St ,  Springhill , FL   34608', '4 bed', '2 bath', '2,108 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/5101-Teather-St_Spring-Hill_FL_34608_M53924-57429']
+['$96,000', '7101 Pistachio St ,  Weeki Wachee , FL   34607', '3 bed', '2 bath', '876 sqft', '0.26 acre lot', 'https://www.realtor.com/realestateandhomes-detail/7101-Pistachio-St_Weeki-Wachee_FL_34607_M58885-41656']
+['$320,000', '14018 Wilburton St ,  Springhill , FL   34609', '3 bed', '2 bath', '1,575 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/14018-Wilburton-St_Spring-Hill_FL_34609_M51973-70220']
+['$239,900', '1109 Lodge Cir ,  Springhill , FL   34606', '2 bed', '2.5+ bath', '1,327 sqft', '0.33 acre lot', 'https://www.realtor.com/realestateandhomes-detail/1109-Lodge-Cir_Spring-Hill_FL_34606_M67820-78531']
+['$429,990', '11876 Bristol Bridge Rd ,  Springhill , FL   34610', '4 bed', '2.5 bath', '2,370 sqft', '5,663 sqft lot', 'https://www.realtor.com/realestateandhomes-detail/11876-Bristol-Bridge-Rd_Spring-Hill_FL_34610_M96483-93728']
+['$295,000', '11119 Timbercrest Rd ,  Springhill , FL   34608', '3 bed', '2 bath', '1,391 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/11119-Timbercrest-Rd_Spring-Hill_FL_34608_M54442-94355']
+['$359,900', '7076 Ortega Ave ,  Springhill , FL   34609', '4 bed', '2 bath', '1,986 sqft', '0.31 acre lot', 'https://www.realtor.com/realestateandhomes-detail/7076-Ortega-Ave_Spring-Hill_FL_34609_M55803-15045']
+['$359,990', '12087 Beck St ,  Springhill , FL   34609', '3 bed', '2 bath', '1,932 sqft', '0.28 acre lot', 'https://www.realtor.com/realestateandhomes-detail/12087-Beck-St_Spring-Hill_FL_34609_M53475-51969']
+['$275,000', '11007 Linden Dr ,  Springhill , FL   34609', '3 bed', '2.5 bath', '1,441 sqft', '0.28 acre lot', 'https://www.realtor.com/realestateandhomes-detail/11007-Linden-Dr_Spring-Hill_FL_34609_M50275-86586']
+['$499,900', '8431 Day St ,  Springhill , FL   34606', '3 bed', '2 bath', '2,422 sqft', '0.45 acre lot', 'https://www.realtor.com/realestateandhomes-detail/8431-Day-St_Spring-Hill_FL_34606_M57954-88598']
+['$269,999', '1451 Bentley Ave ,  Springhill , FL   34608', '3 bed', '2 bath', '1,665 sqft', '0.26 acre lot', 'https://www.realtor.com/realestateandhomes-detail/1451-Bentley-Ave_Spring-Hill_FL_34608_M50172-63920']
+['$249,900', '1394 Escobar Ave ,  Springhill , FL   34608', '2 bed', '2 bath', '1,059 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/1394-Escobar-Ave_Spring-Hill_FL_34608_M50149-53432']
+['$400,000', '10124 Swanson Ct ,  Springhill , FL   34608', '3 bed', '2 bath', '1,995 sqft', '0.4 acre lot', 'https://www.realtor.com/realestateandhomes-detail/10124-Swanson-Ct_Spring-Hill_FL_34608_M54014-92845']
+['From $443,990', 'Barrington at Sterling Hill  13111 Pepper Stem Street ,  Spring Hill , FL   34609', '4 bed', '3.5 bath', '3,278 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/Jordyn-II_Barrington-at-Sterling-Hill_13111-Pepper-Stem-Street_Spring-Hill_FL_34609_P417000633685']
+['$449,275', '2484 Magellan Ave ,  Springhill , FL   34608', '4 bed', '3 bath', '2,286 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/2484-Magellan-Ave_Spring-Hill_FL_34608_M54060-54362']
+['$555,450', '13117 Curry Dr ,  Springhill , FL   34609', '4 bed', '3 bath', '3,526 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/13117-Curry-Dr_Spring-Hill_FL_34609_M60772-25359']
+['$323,700', '2137 Ardenwood Dr ,  Springhill , FL   34609', '3 bed', '2 bath', '1,273 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/2137-Ardenwood-Dr_Spring-Hill_FL_34609_M69293-40176']
+['$346,900', '5345 Landover Blvd ,  Springhill , FL   34609', '4 bed', '2 bath', '1,867 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/5345-Landover-Blvd_Spring-Hill_FL_34609_M60490-69977']
+['$346,990', '4366 Montano Ave ,  Springhill , FL   34609', '4 bed', '2 bath', '1,867 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/4366-Montano-Ave_Spring-Hill_FL_34609_M51174-41010']
+['$337,200', '2409 Bishop Rd ,  Springhill , FL   34608', '4 bed', '2 bath', '1,546 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/2409-Bishop-Rd_Spring-Hill_FL_34608_M69984-13564']
+['$382,655 $20k', '3866 Autumn Amber Dr ,  Springhill , FL   34609', '4 bed', '2.5 bath', '2,045 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/3866-Autumn-Amber-Dr_Spring-Hill_FL_34609_M98667-50378']
+['$458,990 $20k', '3891 Autumn Amber Dr ,  Springhill , FL   34609', '4 bed', '3.5 bath', '3,278 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/3891-Autumn-Amber-Dr_Spring-Hill_FL_34609_M91537-51366']
+['$314,990 $15k', '5287 Deltona Blvd ,  Springhill , FL   34606', '4 bed', '2 bath', '1,828 sqft', None, 'https://www.realtor.com/realestateandhomes-detail/5287-Deltona-Blvd_Spring-Hill_FL_34606_M62877-29296']
+['$285,000', '7303 Apache Trl ,  Springhill , FL   34606', '4 bed', '2 bath', '1,560 sqft', '8,000 sqft lot', 'https://www.realtor.com/realestateandhomes-detail/7303-Apache-Trl_Spring-Hill_FL_34606_M58686-15749']
+['$349,000', '377 Royal Palm Way ,  Springhill , FL   34608', '2 bed', '2 bath', '1,552 sqft', '7,536 sqft lot', 'https://www.realtor.com/realestateandhomes-detail/377-Royal-Palm-Way_Spring-Hill_FL_34608_M69020-34757']
+['$180,000', '2104 Bishop Rd ,  Springhill , FL   34608', '2 bed', '2 bath', '1,239 sqft', '0.26 acre lot', 'https://www.realtor.com/realestateandhomes-detail/2104-Bishop-Rd_Spring-Hill_FL_34608_M69974-01147']
+['$310,000', '11325 Outrigger Ave ,  Springhill , FL   34608', '3 bed', '2 bath', '1,586 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/11325-Outrigger-Ave_Spring-Hill_FL_34608_M54248-78799']
+['$210,000', '11528 Tuscanny Ave ,  Springhill , FL   34608', '2 bed', '1.5 bath', '870 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/11528-Tuscanny-Ave_Spring-Hill_FL_34608_M53834-76337']
+['$369,900', '7328 Lamplighter St ,  Springhill , FL   34606', '3 bed', '2 bath', '1,589 sqft', '0.28 acre lot', 'https://www.realtor.com/realestateandhomes-detail/7328-Lamplighter-St_Spring-Hill_FL_34606_M68373-06658']
+['$99,900', '6121 Cartwrite Rd ,  Springhill , FL   34609', '3 bed', '2 bath', '960 sqft', '1.2 acre lot', 'https://www.realtor.com/realestateandhomes-detail/6121-Cartwrite-Rd_Spring-Hill_FL_34609_M60170-68254']
+['$334,900', '10416 Norvell Rd ,  Springhill , FL   34608', '4 bed', '2 bath', '1,763 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/10416-Norvell-Rd_Spring-Hill_FL_34608_M54284-93596']
+['$284,500', '8362 Sunflower Dr ,  Springhill , FL   34606', '3 bed', '2 bath', '1,191 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/8362-Sunflower-Dr_Spring-Hill_FL_34606_M57947-54651']
+['$229,000', '5154 Springwood Rd ,  Springhill , FL   34609', '2 bed', '1.5 bath', '1,188 sqft', '7,841 sqft lot', 'https://www.realtor.com/realestateandhomes-detail/5154-Springwood-Rd_Spring-Hill_FL_34609_M55232-60888']
+['$220,000', '4384 Deltona Blvd ,  Springhill , FL   34606', '2 bed', '2 bath', '1,119 sqft', '8,669 sqft lot', 'https://www.realtor.com/realestateandhomes-detail/4384-Deltona-Blvd_Spring-Hill_FL_34606_M57785-69860']
+['$309,000', '1032 Godfrey Ave ,  Springhill , FL   34609', '3 bed', '2 bath', '1,626 sqft', '0.23 acre lot', 'https://www.realtor.com/realestateandhomes-detail/1032-Godfrey-Ave_Spring-Hill_FL_34609_M52520-39358']
+```
