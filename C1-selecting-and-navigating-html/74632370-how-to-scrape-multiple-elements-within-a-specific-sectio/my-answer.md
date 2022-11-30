@@ -1,0 +1,97 @@
+---
+title: "How to scrape multiple elements within a specific section of a website"
+site: stackoverflow
+question_id: 74632370
+answer_id: 74635364
+url: https://stackoverflow.com/a/74635364
+author: Driftr95 (me)
+author_url: https://stackoverflow.com/users/6146136
+answered: 2022-11-30T23:39:21Z
+last_edited: never
+revisions: 1
+revision_history: https://stackoverflow.com/posts/74635364/revisions
+accepted: true
+score: 0
+chapter: C1
+chapter_title: "Selecting and navigating HTML"
+cluster: scrape-static-html-bs4
+helpers_referenced: []
+license: my own text and code (also published on Stack Overflow under CC BY-SA 4.0)
+retrieved_at: 2026-10-12T16:14:00Z
+content_sha256: 10eee9aad77b890daf750bfe6646d15d59568e51a69fadf7e02b138c97b87df4
+commit_dated: answered (the commit holds the text as retrieved, i.e. the last revision, not the first)
+status: as posted
+---
+
+# My answer — 2022-11-30
+
+Posted by me ([Driftr95](https://stackoverflow.com/users/6146136)) on Stack Overflow, <https://stackoverflow.com/a/74635364>, 2022-11-30; **accepted**; score 0. Text as retrieved 2026-10-12.
+
+Use [css selectors](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#css-selectors), specifically the [sibling combinator `~`](https://facelessuser.github.io/soupsieve/selectors/combinators/#general-sibling-combinator) and the [pseudo-classes](https://facelessuser.github.io/soupsieve/selectors/pseudo-classes/) `:has` and`:not`:
+```python
+hhSel = 'h2:has(#History)'
+htSel = f'{hhSel} ~ *:not(style):not(h2):not({hhSel} ~ h2 ~ *)'
+hSectTags = soup.select(htSel)
+
+for hst in hSectTags:
+    flatTxt = ' '.join(w for w in hst.get_text(' ').split() if w)
+    print(hst.name, '--->', flatTxt[:100] if flatTxt else hst)
+``` 
+prints
+```lang-none
+div ---> Main article: History of Microsoft
+link ---> <link href="mw-data:TemplateStyles:r1033289096" rel="mw-deduplicated-inline-style"/>
+div ---> For a chronological guide, see Timeline of Microsoft .
+h3 ---> 1972–1985: Founding
+div ---> An Altair 8800 computer (left) with the popular Model 33 ASR Teletype as terminal, paper tape reader
+div ---> Paul Allen and Bill Gates on October 19, 1981, after signing a pivotal contract with IBM [11] : 228
+p ---> Childhood friends Bill Gates and Paul Allen sought to make a business using their skills in computer
+p ---> Microsoft entered the operating system (OS) business in 1980 with its own version of Unix called Xen
+h3 ---> 1985–1994: Windows and Office
+div ---> Windows 1.0 was released on November 20, 1985, as the first version of the Windows line.
+p ---> Microsoft released Windows on November 20, 1985, as a graphical extension for MS-DOS, [11] : 242–243
+p ---> In 1990, Microsoft introduced the Microsoft Office suite which bundled separate applications such as
+p ---> On July 27, 1994, the Department of Justice's Antitrust Division filed a competitive impact statemen
+h3 ---> 1995–2007: Foray into the Web, Windows 95, Windows XP, and Xbox
+div ---> In 1996, Microsoft released Windows CE, a version of the operating system meant for personal digital
+p ---> Following Bill Gates' internal "Internet Tidal Wave memo" on May 26, 1995, Microsoft began to redefi
+div ---> Microsoft released the first installment in the Xbox series of consoles in 2001. The Xbox , graphica
+p ---> On January 13, 2000, Bill Gates handed over the CEO position to Steve Ballmer , an old college frien
+p ---> Increasingly present in the hardware business following Xbox, Microsoft 2006 released the Zune serie
+h3 ---> 2007–2011: Microsoft Azure, Windows Vista, Windows 7, and Microsoft Stores
+div ---> CEO Steve Ballmer at the MIX event in 2008. In an interview about his management style in 2005, he m
+div ---> Headquarters of the European Commission, which has imposed several fines on Microsoft
+p ---> Released in January 2007, the next version of Windows, Vista , focused on features, security and a r
+p ---> Gates retired from his role as Chief Software Architect on June 27, 2008, a decision announced in Ju
+p ---> As the smartphone industry boomed in the late 2000s, Microsoft had struggled to keep up with its riv
+h3 ---> 2011–2014: Windows 8/8.1, Xbox One, Outlook.com, and Surface devices
+div ---> Surface Pro 3 , part of the Surface series of laplets by Microsoft
+p ---> Following the release of Windows Phone , Microsoft undertook a gradual rebranding of its product ran
+p ---> In July 2012, Microsoft sold its 50% stake in MSNBC, which it had run as a joint venture with NBC si
+p ---> In August 2012, the New York City Police Department announced a partnership with Microsoft for the d
+div ---> The Xbox One console, released in 2013
+p ---> The Kinect , a motion-sensing input device made by Microsoft and designed as a video game controller
+p ---> In line with the maturing PC business, in July 2013, Microsoft announced that it would reorganize th
+div ---> <div style="clear:both;"></div>
+h3 ---> 2014–2020: Windows 10, Microsoft Edge, and HoloLens
+div ---> Satya Nadella succeeded Steve Ballmer as the CEO of Microsoft in February 2014.
+p ---> On February 4, 2014, Steve Ballmer stepped down as CEO of Microsoft and was succeeded by Satya Nadel
+p ---> On January 21, 2015, Microsoft announced the release of their first Interactive whiteboard , Microso
+p ---> On March 1, 2016, Microsoft announced the merger of its PC and Xbox divisions, with Phil Spencer ann
+div ---> The Nokia Lumia 1320 , the Microsoft Lumia 535 and the Nokia Lumia 530 , which all run on one of the
+p ---> In January 2018, Microsoft patched Windows 10 to account for CPU problems related to Intel's Meltdow
+div ---> Apollo 11 astronaut Buzz Aldrin using a Microsoft HoloLens mixed reality headset in September 2016
+p ---> In August 2018, Toyota Tsusho began a partnership with Microsoft to create fish farming tools using 
+p ---> On February 20, 2019, Microsoft Corp said it will offer its cyber security service AccountGuard to 1
+h3 ---> 2020–present: Acquisitions, Xbox Series X/S, and Windows 11
+link ---> <link href="mw-data:TemplateStyles:r1033289096" rel="mw-deduplicated-inline-style"/>
+div ---> Main article: Acquisition of Activision Blizzard by Microsoft
+p ---> On March 26, 2020, Microsoft announced it was acquiring Affirmed Networks for about $1.35 billion. [
+p ---> On July 31, 2020, it was reported that Microsoft was in talks to acquire TikTok after the Trump admi
+p ---> On August 5, 2020, Microsoft stopped its xCloud game streaming test for iOS devices . According to M
+p ---> On September 22, 2020, Microsoft announced that it had an exclusive license to use OpenAI ’s GPT-3 a
+p ---> In April 2021, Microsoft announced it would buy Nuance Communications for approximately $16 billion.
+p ---> On June 24, 2021, Microsoft announced Windows 11 during a Livestream. The announcement came with con
+p ---> In October 2021, Microsoft announced that it began rolling out end-to-end encryption (E2EE) support 
+p ---> On January 18, 2022, Microsoft announced the acquisition of American video game developer and holdin
+```
