@@ -1,0 +1,78 @@
+{
+ "A1": {
+  "title": "Building, updating and reading dicts: key paths and defaults",
+  "intro": "Building dicts from lists, tuples and text, avoiding KeyError, safe nested access with getVal and getNestedVal, updating by key path, optional fields with defaults."
+ },
+ "A2": {
+  "title": "Flattening and walking nested structures",
+  "intro": "flattenObj and recFlatten, iterating nested layers, de-duplicating nested values, stringifying nested objects."
+ },
+ "A3": {
+  "title": "Reshaping lists of dicts: sort, group, dedupe, merge",
+  "intro": "Sorting by several keys, grouping by a key, de-duplicating, matching and merging two structures."
+ },
+ "A4": {
+  "title": "JSON, CSV and Excel in and out",
+  "intro": "Updating and pruning JSON files, dict to CSV with stable fieldnames, JSON to Excel."
+ },
+ "A5": {
+  "title": "pandas: building and reshaping DataFrames",
+  "intro": "JSON into DataFrames (json_normalize versus a flatten), unnesting list columns, MultiIndex from Excel, splitting and mapping columns, conditional tagging, row and column reshaping."
+ },
+ "C1": {
+  "title": "Selecting and navigating HTML",
+  "intro": "CSS selectors versus find/find_all, :-soup-contains, nth-of-type, sibling and parent hops, attribute selectors, combining criteria, and coping with structure you cannot see in advance. The usual fix is a tighter selector plus select_one with a default."
+ },
+ "C2": {
+  "title": "Getting clean text out of tags",
+  "intro": "get_text with separators and strip, inline tags nested inside text, br handling, whitespace and newlines, aria-hidden spans, separating labels from values, decoding entities."
+ },
+ "C3": {
+  "title": "Links, attributes, images and downloads",
+  "intro": "href and src extraction, relative to absolute URLs with urljoin, lazy-loaded image attributes (data-src), downloading zips, PDFs and images with streaming requests, safe filenames."
+ },
+ "C4": {
+  "title": "Tables into DataFrames",
+  "intro": "pandas.read_html when it works, hand-parsing tables when it does not, rowspan and colspan, header detection, several tables per page, cleaning numbers on the way into a DataFrame."
+ },
+ "C5": {
+  "title": "Why is it empty? Debugging None and []",
+  "intro": "The diagnosis checklist behind every None, [] and AttributeError: wrong selector, content that is not in the HTML (rendered by JavaScript), a blocked response, the wrong URL, or the wrong tag type."
+ },
+ "C6": {
+  "title": "Pagination and crawling",
+  "intro": "Page parameters, next links, finding the total number of pages, queue-based crawling with a visited set and resume, de-duplicating links, polite delays."
+ },
+ "C7": {
+  "title": "JavaScript-rendered pages: Selenium and friends",
+  "intro": "Telling JS-rendered content apart from static HTML, Selenium waits (WebDriverWait and expected conditions), consent and load-more clicks, scrolling, handing page_source to bs4, requests-html, and when to stop and look for the API instead."
+ },
+ "C8": {
+  "title": "Hidden APIs and JSON inside script tags",
+  "intro": "Reading the network tab, replaying XHR calls with requests (headers, payload, cookies), curlconverter, __NEXT_DATA__ and ld+json blocks, JavaScript object literals pulled out of script tags, paginating an API."
+ },
+ "C9": {
+  "title": "Blocked requests: headers, Cloudflare, scraping services",
+  "intro": "Headers and user agents, 403s, Cloudflare challenges and cloudscraper, scraping services as paid escapes, rate limits, the Selenium fallback, and when to stop."
+ },
+ "C10": {
+  "title": "Platforms: Facebook, Twitter, YouTube, TikTok, LinkedIn, Glassdoor",
+  "intro": "Facebook pages through page_source, Twitter through snscrape (which no longer works), YouTube titles and playlists, TikTok, LinkedIn searches, Glassdoor reviews behind a login. Pages as they were in 2022–2023."
+ },
+ "C11": {
+  "title": "Saving results: CSV, Excel, PDF, Google Sheets",
+  "intro": "Rows to CSV and Excel (one sheet or several), JSON out, Google Sheets through gspread or pygsheets, reading a Google Docs table without the API, tables out of PDFs with tabula and pdfplumber."
+ },
+ "G1": {
+  "title": "JavaScript / DOM one-offs",
+  "intro": "The first weeks on the site, before the Python focus: DOM manipulation, event handlers, a linked list, a Google Chart legend, the Chrome translation popup."
+ },
+ "G2": {
+  "title": "Small Python one-offs",
+  "intro": "Small Python one-offs: loops, strings, a boolean in another file, folder renaming."
+ },
+ "X": {
+  "title": "English Language & Usage and English Language Learners",
+  "intro": "Seven answers on the two English-language sites, kept here because the repository is the complete record."
+ }
+}
