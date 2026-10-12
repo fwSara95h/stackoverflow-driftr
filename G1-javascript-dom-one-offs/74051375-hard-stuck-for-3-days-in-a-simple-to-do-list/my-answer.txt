@@ -1,0 +1,23 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74052093 (posted 2022-10-13), extracted verbatim; may need the question's context to run.
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>la lista</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="list-style.css"/>
+
+    </head>
+    <body>
+        <main>
+            <h1>Ysmael's To-Do List</h1>
+            <h3>Input your activities</h3>
+            <form>
+                Input something<input type="text" required id="toDoInput" placeholder="Input your stuff"/><button id="addButton" type="button">+</button>
+            </form>
+            <ul id="toDoList">
+            </ul>
+        </main>
+        <script href="todolist.js"></script>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74135961 (posted 2022-10-20), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+Wind: NE 8 km/h Temperature: 18.2°C Pressure: 101.9 kPa Dew point: -8.1°C Visibility: 24 km Humidity: 16% Date: 8:00 PM MDT Wednesday 19 October 2022 Observed at: Calgary Int'l Airport
+
+--- block 2 ---
+Condition: Partly Cloudy Pressure: 101.3 kPa Tendency: Rising Temperature: 8.9°C Dew point: -0.3°C Humidity: 52% Wind: N 43  gust 54 km/h Visibility: 24 km 
+
+##############
+As Dictionary:
+{'Condition': 'Partly Cloudy', 'Pressure': '101.3 kPa', 'Tendency': 'Rising', 'Temperature': '8.9°C', 'Dew point': '-0.3°C', 'Humidity': '52%', 'Wind': 'N 43  gust 54 km/h', 'Visibility': '24 km'}

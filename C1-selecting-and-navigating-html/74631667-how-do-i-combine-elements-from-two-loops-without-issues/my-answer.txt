@@ -1,0 +1,13 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74632004 (posted 2022-11-30), extracted verbatim; may need the question's context to run.
+Call of Duty: Modern Warfare II (2022), 69.99, 77.05, 153356
+Red Dead Redemption 2, 14.85, 13.79, 80011
+God of War, 28.12, 22.03, 130187
+ELDEN RING, 50.36, 48.10, 119003
+Cyberpunk 2077, 29.99, 28.63, 73502
+EA SPORTS FIFA 23, 41.99, 39.04, 156474
+Warhammer 40,000: Darktide, 39.99, 45.86, 96592
+Marvel's Spider-Man Remastered, 30.71, 27.07, 154207
+Persona 5 Royal, 37.79, 43.32, 155123
+The Callisto Protocol, 59.99, 69.41, 152790
+Need for Speed Unbound, 69.99, 42.29, 165013
+Days Gone, 15.00, 9.01, 110837

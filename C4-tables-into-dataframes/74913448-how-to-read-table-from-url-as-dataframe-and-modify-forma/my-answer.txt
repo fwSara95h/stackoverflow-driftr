@@ -1,0 +1,26 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74915155 (posted 2022-12-25), extracted verbatim; may need the question's context to run.
+| Country   | Date       | Day          | Name                                          | Type                        |
+|:----------|:-----------|:-------------|:----------------------------------------------|:----------------------------|
+| Kenya     | 01.01.2012 | Niedziela    | New Year's Day                                | Public holiday              |
+| Kenya     | 19.07.2015 | Niedziela    | Eid al-Fitr                                   | Public holiday              |
+| Kenya     | 10.10.2018 | Środa        | Moi Day                                       | Public holiday              |
+| Kenya     | 10.10.2021 | Niedziela    | Huduma Day                                    | Public holiday              |
+| Kenya     | 26.12.2023 | Wtorek       | Boxing Day                                    | Public holiday              |
+| Kenya     | 01.01.2027 | Piątek       | New Year's Day                                | Public holiday              |
+| Kenya     | 14.04.2030 | Niedziela    | Eid al-Adha (Tentative Date)                  | Optional Holiday            |
+| Tonga     | 17.09.2012 | Poniedziałek | Birthday of Crown Prince Tupouto'a-'Ulukalala | Public Holiday              |
+| Tonga     | 25.04.2016 | Poniedziałek | ANZAC Day                                     | Public Holiday              |
+| Tonga     | 04.12.2019 | Środa        | Anniversary of the Coronation of King Tupou I | Public Holiday              |
+| Tonga     | 04.06.2023 | Niedziela    | Emancipation Day                              | Public Holiday              |
+| Tonga     | 01.01.2027 | Piątek       | New Year's Day                                | Public Holiday              |
+| Tonga     | 04.11.2030 | Poniedziałek | Constitution Day                              | Public Holiday              |
+| Belgium   | 06.12.2011 | Wtorek       | St. Nicholas Day                              | Observance                  |
+| Belgium   | 06.12.2013 | Piątek       | St. Nicholas Day                              | Observance                  |
+| Belgium   | 06.12.2015 | Niedziela    | St. Nicholas Day                              | Observance                  |
+| Belgium   | 15.11.2017 | Środa        | Day of the German-speaking Community          | Regional government holiday |
+| Belgium   | 01.11.2019 | Piątek       | All Saints' Day                               | National holiday            |
+| Belgium   | 31.10.2021 | Niedziela    | Halloween                                     | Observance                  |
+| Belgium   | 23.09.2023 | Sobota       | September Equinox                             | Season                      |
+| Belgium   | 15.08.2025 | Piątek       | Assumption of Mary                            | National holiday            |
+| Belgium   | 11.07.2027 | Niedziela    | Day of the Flemish Community                  | Regional government holiday |
+| Belgium   | 10.06.2029 | Niedziela    | Father's Day                                  | Observance                  |

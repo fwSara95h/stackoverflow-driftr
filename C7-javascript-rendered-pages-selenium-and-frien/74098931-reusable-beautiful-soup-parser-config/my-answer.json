@@ -1,0 +1,22 @@
+{
+    "name": "Paedriactia",
+    "data_structure": {
+        "cssSelector": "div.section__inner",
+        "items": {
+            "Issue": "p.section__spitzmarke",
+            "Articles": {
+                "cssSelector": "article",
+                "items": {
+                    "Title": "h3.teaser__title",
+                    "Author": "p.teaser__authors" 
+                },
+                "isList": true
+            }
+        },
+        "isList": true
+    }
+    "url": "https://www.paediatrieschweiz.ch/zeitschriften/"
+}
+"Title": { "cssSelector": "h3.teaser__title" }
+"Link": "\"ta\":href"
+"Link": {"targetAttr": "href"}

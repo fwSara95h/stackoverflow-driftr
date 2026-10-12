@@ -1,0 +1,3 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/75154564 (posted 2023-01-18), extracted verbatim; may need the question's context to run.
+> <200 OK> from https://www.newegg.com/areyouahuman?referer=/areyouahuman?referer=https%3A%2F%2Fwww.newegg.com%2Fmsi-geforce-rtx-3060-rtx-3060-ventus-2x-12g-oc%2Fp%2FN82E16814137632%3FDescription%3Dgpu%26cm_re%3Dgpu-_-14-137-632-_-Product&why=8&cm_re=gpu-_-14-137-632-_-Product&Description=gpu
+>

@@ -1,0 +1,104 @@
+{
+    "actual": 124.12623323305537,
+    "avg": 83.32096287339556,
+    "avgDifference": 48.97359434223362,
+    "minValue": 26.353309862919502,
+    "minValueRank": 2019,
+    "maxValue": 144.51093035368598,
+    "maxValueRank": 2020,
+    "actual_F": "124,13%",
+    "avg_F": "83,32%",
+    "avgDifference_F": "48,97% acima da m\u00e9dia",
+    "minValue_F": "26,35%",
+    "minValueRank_F": "2019",
+    "maxValue_F": "144,51%",
+    "maxValueRank_F": "2020",
+    "chart": {
+        "categoryUnique": true,
+        "category": [
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022"
+        ],
+        "series": {
+            "percentual": [
+                {
+                    "value": 27.189302754606462,
+                    "value_F": "27,19%"
+                },
+                {
+                    "value": 26.353309862919502,
+                    "value_F": "26,35%"
+                },
+                {
+                    "value": 144.51093035368598,
+                    "value_F": "144,51%"
+                },
+                {
+                    "value": 94.42503816271046,
+                    "value_F": "94,43%"
+                },
+                {
+                    "value": 124.12623323305537,
+                    "value_F": "124,13%"
+                }
+            ],
+            "proventos": [
+                {
+                    "value": 7009130357.11,
+                    "value_F": "R$ 7.009.130.357,11",
+                    "valueSmall_F": "7,01 B"
+                },
+                {
+                    "value": 10577427979.68,
+                    "value_F": "R$ 10.577.427.979,68",
+                    "valueSmall_F": "10,58 B"
+                },
+                {
+                    "value": 10271836929.54,
+                    "value_F": "R$ 10.271.836.929,54",
+                    "valueSmall_F": "10,27 B"
+                },
+                {
+                    "value": 100721299707.4,
+                    "value_F": "R$ 100.721.299.707,40",
+                    "valueSmall_F": "100,72 B"
+                },
+                {
+                    "value": 179966901777.61,
+                    "value_F": "R$ 179.966.901.777,61",
+                    "valueSmall_F": "179,97 B"
+                }
+            ],
+            "lucroLiquido": [
+                {
+                    "value": 25779000000.0,
+                    "value_F": "R$ 25.779.000.000,00",
+                    "valueSmall_F": "25,78 B"
+                },
+                {
+                    "value": 40137000000.0,
+                    "value_F": "R$ 40.137.000.000,00",
+                    "valueSmall_F": "40,14 B"
+                },
+                {
+                    "value": 7108000000.0,
+                    "value_F": "R$ 7.108.000.000,00",
+                    "valueSmall_F": "7,11 B"
+                },
+                {
+                    "value": 106668000000.0,
+                    "value_F": "R$ 106.668.000.000,00",
+                    "valueSmall_F": "106,67 B"
+                },
+                {
+                    "value": 144987000000.0,
+                    "value_F": "R$ 144.987.000.000,00",
+                    "valueSmall_F": "144,99 B"
+                }
+            ]
+        }
+    }
+}

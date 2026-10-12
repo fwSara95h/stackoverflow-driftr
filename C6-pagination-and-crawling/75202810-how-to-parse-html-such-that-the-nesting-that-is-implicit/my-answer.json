@@ -1,0 +1,54 @@
+> {
+>     "h1_1": {
+>         "textContent": "Motley Mess Menu",
+>         "h2_1": {
+>             "textContent": "Breakfast",
+>             "h3_1": {
+>                 "textContent": "Omelets",
+>                 "h4_1": {
+>                     "textContent": "Cheese",
+>                     "p_1": "$7",
+>                     "p_2": "American style omelet containing your choice of Cheddar, Swiss, Feta, Colby Jack or all four!"
+>                 },
+>                 "h4_2": {
+>                     "textContent": "Sausage Mushroom",
+>                     "p_1": "$8",
+>                     "p_2": "American style omelet containing sausage, mushroom and Swiss cheese"
+>                 },
+>                 "h4_3": {
+>                     "textContent": "Build-Your-Own",
+>                     "p_1": "$8",
+>                     "p_2": "American style omelet containing\u2026you tell me!",
+>                     "p_3": "Options (+50 cents after 3):",
+>                     "ul_1": {
+>                         "li_1": "Cheddar",
+>                         "li_2": "Swiss",
+>                         "li_3": "Feta",
+>                         "li_4": "Colby Jack",
+>                         "li_5": "Bacon Bits",
+>                         "li_6": "Sausage",
+>                         "li_7": "Onion",
+>                         "li_8": "Hamburger",
+>                         "li_9": "Jalapenos",
+>                         "li_10": "Hash Browns"
+>                     }
+>                 }
+>             },
+>             "h3_2": {
+>                 "textContent": "Combos",
+>                 "p_1": "Each come with your choice of two sides",
+>                 "h4_1": {
+>                     "textContent": "Eggs and Bacon",
+>                     "p_1": "$8",
+>                     "p_2": "Eggs cooked your way and crispy bacon. Sausage substitution is fine"
+>                 },
+>                 "h4_2": {
+>                     "textContent": "Glorious Smash",
+>                     "p_1": "$10",
+>                     "p_2": "Your favorite breakfast of two pancakes, two eggs cooked your way, two sausages and two bacon, free of all trademark infringement! If you think you can finish it all then you forgot about the choice of two sides!"
+>                 }
+>             }
+>         }
+>     }
+> }
+>

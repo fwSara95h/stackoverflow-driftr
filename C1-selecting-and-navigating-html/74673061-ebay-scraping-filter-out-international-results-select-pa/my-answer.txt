@@ -1,0 +1,22 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74677546 (posted 2022-12-04), extracted verbatim; may need the question's context to run.
+
+
+With Location
+    $151.40 Best offer accepted +$16.72 shipping from Lithuania Free returns ​ Sponsored
+
+
+Without Location
+    $349.95 Buy It Now Free shipping ​ Sponsored
+    $299.40 Was: Previous Price $499.00 40% off or Best Offer +$29.00 shipping ​ Sponsored
+    $425.00 Best offer accepted +$13.45 shipping ​ Sponsored
+    $329.99 Buy It Now +$19.99 shipping ​ Sponsored
+    $349.30 Was: Previous Price $499.00 30% off or Best Offer +$29.00 shipping ​ Sponsored
+    $296.65 Was: Previous Price $349.00 15% off Buy It Now +$20.00 shipping ​ Sponsored
+    $339.99 Buy It Now +$17.87 shipping ​ Sponsored
+    $361.00 Buy It Now +$10.51 shipping ​ Sponsored
+    $202.00 16 bids +$25.05 shipping ​ Sponsored
+    $236.00 Buy It Now +$5.99 shipping Extra 15% off ​ Sponsored
+    $300.00 or Best Offer +$12.75 shipping ​ Sponsored
+    $330.00 or Best Offer +$11.00 shipping ​ Sponsored
+    $330.00 Best offer accepted +$11.00 shipping ​ Sponsored
+    $289.00 Best offer accepted +$16.75 shipping ​ Sponsored

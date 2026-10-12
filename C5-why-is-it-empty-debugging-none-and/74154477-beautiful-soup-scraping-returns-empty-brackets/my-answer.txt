@@ -1,0 +1,53 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74159271 (posted 2022-10-21), extracted verbatim; may need the question's context to run.
+|    Rank    |                     Bank name                      |    Market cap(US$ billion)     |
+| ++++++++++ | ++++++++++++++++++++++++++++++++++++++++++++++++++ | ++++++++++++++++++++++++++++++ |
+|     1      |                   JPMorgan Chase                   |           400.37[6]            |
+|     2      |      Industrial and Commercial Bank of China       |             295.65             |
+|     3      |                  Bank of America                   |             279.73             |
+|     4      |                    Wells Fargo                     |             214.34             |
+|     5      |              China Construction Bank               |             207.98             |
+|     6      |             Agricultural Bank of China             |             181.49             |
+|     7      |                 HSBC Holdings PLC                  |             169.47             |
+|     8      |                   Citigroup Inc.                   |             163.58             |
+|     9      |                   Bank of China                    |             151.15             |
+|     10     |                China Merchants Bank                |             133.37             |
+|     11     |                Royal Bank of Canada                |             113.80             |
+|     12     |               Toronto-Dominion Bank                |             106.61             |
+|     13     |                     HDFC Bank                      |             105.9              |
+|     14     |                 Commonwealth Bank                  |             99.77              |
+|     15     |                    U.S. Bancorp                    |             84.40              |
+|     16     |                   Goldman Sachs                    |             78.70              |
+|     17     |                  Banco Santander                   |             75.47              |
+|     18     |                   Banco Bradesco                   |             74.67              |
+|     19     |                   Morgan Stanley                   |             73.93              |
+|     20     |                      Westpac                       |             67.84              |
+|     21     |           Mitsubishi UFJ Financial Group           |             66.20              |
+|     22     |                     Scotiabank                     |             65.48              |
+|     23     |               PNC Financial Services               |             63.11              |
+|     24     |               Bank of Communications               |             61.85              |
+|     25     |                    BNP Paribas                     |             59.36              |
+|     26     |      Australia and New Zealand Banking Group       |             54.88              |
+|     27     |              National Australia Bank               |             51.68              |
+|     28     |                Lloyds Banking Group                |             51.19              |
+|     29     |          Sumitomo Mitsui Financial Group           |             49.85              |
+|     30     |                  Bank of Montreal                  |             48.12              |
+|     31     |                        UBS                         |             45.92              |
+|     32     |                     ING Group                      |             44.97              |
+|     33     |                    Capital One                     |             43.22              |
+|     34     |            The Bank of New York Mellon             |             42.58              |
+|     35     |                China Minsheng Bank                 |             39.13              |
+|     36     |                  China CITIC Bank                  |             38.55              |
+|     37     |          Banco Bilbao Vizcaya Argentaria           |             37.42              |
+|     38     |               Mizuho Financial Group               |             36.95              |
+|     39     |                  Intesa Sanpaolo                   |             36.90              |
+|     40     |                  Crédit Agricole                   |             34.89              |
+|     41     |         Canadian Imperial Bank of Commerce         |             34.87              |
+|     42     |               Royal Bank of Scotland               |             33.95              |
+|     43     |                      Barclays                      |             33.26              |
+|     44     |                   Credit Suisse                    |             30.75              |
+|     45     |                       Nordea                       |             29.59              |
+|     46     |                 Standard Chartered                 |             29.37              |
+|     47     |                      KBC Bank                      |             27.40              |
+|     48     |                     UniCredit                      |             26.88              |
+|     49     |                  Société Générale                  |             21.27              |
+|     50     |                   Deutsche Bank                    |             15.77              |

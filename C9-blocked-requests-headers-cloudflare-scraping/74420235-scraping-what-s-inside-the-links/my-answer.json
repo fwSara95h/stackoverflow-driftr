@@ -1,0 +1,103 @@
+{
+    "url": "https://www.bleepingcomputer.com/",
+    "atDepth": 0,
+    "pageTitle": "BleepingComputer | Cybersecurity, Technology News and Support",
+    "pageBodyText": "News Featured Latest US govt: Iranian hackers br...n in with Twitter Not a member yet? Register Now",
+    "pageUrls": [
+        {
+            "url": "https://www.bleepingcomputer.com/news/security/us-govt-iranian-hackers-breached-federal-agency-using-log4shell-exploit/",
+            "atDepth": 1,
+            "pageTitle": "US govt: Iranian hackers breached federal agency using Log4Shell exploit",
+            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT",
+            "pageUrls": [
+                {
+                    "url": "https://www.bleepingcomputer.com/news/security/us-govt-iranian-hackers-breached-federal-agency-using-log4shell-exploit/",
+                    "atDepth": 2,
+                    "pageTitle": "US govt: Iranian hackers breached federal agency using Log4Shell exploit",
+                    "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT",
+                    "pageUrls": [
+                        {
+                            "url": "https://www.bleepingcomputer.com/news/security/us-govt-iranian-hackers-breached-federal-agency-using-log4shell-exploit/",
+                            "atDepth": 3,
+                            "pageTitle": "US govt: Iranian hackers breached federal agency using Log4Shell exploit",
+                            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT"
+                        },
+                        {
+                            "url": "https://www.bleepingcomputer.com/news/security/google-to-roll-out-privacy-sandbox-on-android-13-starting-early-2023/",
+                            "atDepth": 3,
+                            "pageTitle": "Google to roll out Privacy Sandbox on Android 13 starting early 2023",
+                            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT"
+                        }
+                    ]
+                },
+                {
+                    "url": "https://www.bleepingcomputer.com/news/security/google-to-roll-out-privacy-sandbox-on-android-13-starting-early-2023/",
+                    "atDepth": 2,
+                    "pageTitle": "Google to roll out Privacy Sandbox on Android 13 starting early 2023",
+                    "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT",
+                    "pageUrls": [
+                        {
+                            "url": "https://www.bleepingcomputer.com/news/security/us-govt-iranian-hackers-breached-federal-agency-using-log4shell-exploit/",
+                            "atDepth": 3,
+                            "errorMessage": "Message: timeout: Timed out receiving message from renderer: -0.009\n  (Session info: chrome=107.0.5304.88)\n"
+                        },
+                        {
+                            "url": "https://www.bleepingcomputer.com/news/security/google-to-roll-out-privacy-sandbox-on-android-13-starting-early-2023/",
+                            "atDepth": 3,
+                            "pageTitle": "Google to roll out Privacy Sandbox on Android 13 starting early 2023",
+                            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "url": "https://www.bleepingcomputer.com/news/security/google-to-roll-out-privacy-sandbox-on-android-13-starting-early-2023/",
+            "atDepth": 1,
+            "pageTitle": "Google to roll out Privacy Sandbox on Android 13 starting early 2023",
+            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT",
+            "pageUrls": [
+                {
+                    "url": "https://www.bleepingcomputer.com/news/security/us-govt-iranian-hackers-breached-federal-agency-using-log4shell-exploit/",
+                    "atDepth": 2,
+                    "pageTitle": "US govt: Iranian hackers breached federal agency using Log4Shell exploit",
+                    "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT",
+                    "pageUrls": [
+                        {
+                            "url": "https://www.bleepingcomputer.com/news/security/us-govt-iranian-hackers-breached-federal-agency-using-log4shell-exploit/",
+                            "atDepth": 3,
+                            "pageTitle": "US govt: Iranian hackers breached federal agency using Log4Shell exploit",
+                            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT"
+                        },
+                        {
+                            "url": "https://www.bleepingcomputer.com/news/security/google-to-roll-out-privacy-sandbox-on-android-13-starting-early-2023/",
+                            "atDepth": 3,
+                            "pageTitle": "Google to roll out Privacy Sandbox on Android 13 starting early 2023",
+                            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...SUBMIT advertisement advertisement advertisement"
+                        }
+                    ]
+                },
+                {
+                    "url": "https://www.bleepingcomputer.com/news/security/google-to-roll-out-privacy-sandbox-on-android-13-starting-early-2023/",
+                    "atDepth": 2,
+                    "pageTitle": "Google to roll out Privacy Sandbox on Android 13 starting early 2023",
+                    "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT",
+                    "pageUrls": [
+                        {
+                            "url": "https://www.bleepingcomputer.com/news/security/us-govt-iranian-hackers-breached-federal-agency-using-log4shell-exploit/",
+                            "atDepth": 3,
+                            "pageTitle": "US govt: Iranian hackers breached federal agency using Log4Shell exploit",
+                            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT"
+                        },
+                        {
+                            "url": "https://www.bleepingcomputer.com/news/security/google-to-roll-out-privacy-sandbox-on-android-13-starting-early-2023/",
+                            "atDepth": 3,
+                            "pageTitle": "Google to roll out Privacy Sandbox on Android 13 starting early 2023",
+                            "pageBodyText": "News Featured Latest US govt: Iranian hackers br...what content is prohibited. Submitting... SUBMIT"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

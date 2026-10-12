@@ -1,0 +1,4 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73888211 (posted 2022-09-28), extracted verbatim; may need the question's context to run.
+Index(['content', 'date', 'id', 'outlinks', 'outlinksss', 'tcooutlinks',
+       'tcooutlinksss', 'url', 'username'],
+      dtype='object')

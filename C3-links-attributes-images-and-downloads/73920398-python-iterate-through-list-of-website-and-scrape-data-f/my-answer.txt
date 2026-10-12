@@ -1,0 +1,4 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73929247 (posted 2022-10-02), extracted verbatim; may need the question's context to run.
+scraped "TruffleHog OSS · Actions · GitHub Marketplace · GitHub" from https://github.com/marketplace/actions/TruffleHog-OSS
+scraped "Metrics embed · Actions · GitHub Marketplace · GitHub" from https://github.com/marketplace/actions/Metrics-embed
+scraped "Super-Linter · Actions · GitHub Marketplace · GitHub" from https://github.com/marketplace/actions/Super-Linter

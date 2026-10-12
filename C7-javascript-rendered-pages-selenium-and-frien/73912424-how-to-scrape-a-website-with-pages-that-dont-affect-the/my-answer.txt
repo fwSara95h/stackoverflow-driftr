@@ -1,0 +1,50 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73914652 (posted 2022-09-30), extracted verbatim; may need the question's context to run.
+Includes later revisions by: Nuspli (https://stackoverflow.com/users/19232040), revision 5, 2022-10-01, CC BY-SA 4.0.
+
+--- block 1 ---
+chromeDriver_path = 'chromedriver.exe'
+# I just copied the exe file to the same folder as this py file
+driver = webdriver.Chrome(chromeDriver_path)
+
+--- block 2 ---
+tag = "L9YJUPY22"  # your player tag without '#'
+
+--- block 3 ---
+driver.get('https://www.clashofstats.com/players/' + tag + '/history/log')
+
+--- block 4 ---
+start_dates = driver.find_elements(By.CSS_SELECTOR, 'span.start.date')
+end_dates = driver.find_elements(By.CSS_SELECTOR, 'span.end.date')
+page_btns = driver.find_elements(By.CSS_SELECTOR, 'button.v-pagination__item')
+
+--- block 5 ---
+try:
+    clan = driver.find_element(By.CSS_SELECTOR, 'div.v-list-item__title.text--secondary.font-italic').get_attribute(
+    'innerText')
+except:
+    clan = "something else"
+
+--- block 6 ---
+if start_dates[0].get_attribute('innerText') == end_dates[0].get_attribute('innerText') or clan == "Not in any Clans":
+    # basically the inactivity time can't really be seen from just the clan, so it only works on
+    # players that don't have a clan. this is sometimes displayed weird by the website, thus this logic
+    last_played = start_dates[1].get_attribute('innerText')
+    # only start date is available when turning inactive
+else:
+    last_played = end_dates[0].get_attribute('innerText')  # in a normal case this is "today"
+
+--- block 7 ---
+# see if there are more pages
+if len(page_btns) > 0 and len(end_dates) > 0:
+    page_btns[-1].click()  # click the last page_btn
+    start_dates = driver.find_elements(By.CSS_SELECTOR, 'span.start.date')  # update start dates
+
+--- block 8 ---
+first_played = start_dates[-1].get_attribute('innerText')  # get last start date
+
+--- block 9 ---
+driver.close()  # else the window stays open and your program keeps running
+
+--- block 10 ---
+First time played| Sep 8, 2020
+Last  time played| Oct 1, 2022

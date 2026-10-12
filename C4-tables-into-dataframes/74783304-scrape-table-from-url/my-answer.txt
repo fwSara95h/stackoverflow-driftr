@@ -1,0 +1,13 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74789229 (posted 2022-12-13), extracted verbatim; may need the question's context to run.
+| Name                | Symbol   |   Last |   Chg. | Chg. %   | Vol.   | Time     |
+|:--------------------|:---------|-------:|-------:|:---------|:-------|:---------|
+| Jiuzi Holdings Inc  | JZXN     | 0.24   | 0.092  | +62.09%  | 19.14M | 09:27:41 |
+| OpGen Inc           | OPGN     | 0.245  | 0.12   | +96.00%  | 16.41M | 09:27:41 |
+| Powerbridge         | PBTS     | 0.1001 | 0.0084 | +9.16%   | 12.07M | 09:26:40 |
+| Faraday Future Int. | FFIE     | 0.57   | 0.11   | +24.59%  | 12.03M | 09:27:56 |
+| Magenta Therapeuti. | MGTA     | 1.45   | 0.3    | +26.09%  | 9.12M  | 09:27:58 |
+| Starry Holdings     | STRY     | 0.122  | 0.022  | +21.50%  | 8.34M  | 09:26:57 |
+| Netcapital Inc      | NCPL     | 3.03   | 1.64   | +117.99% | 6.51M  | 09:27:59 |
+| China Pharma        | CPHI     | 0.1449 | 0.0044 | +3.13%   | 3.55M  | 09:26:52 |
+| 111 Inc             | YI       | 3.81   | 0.27   | +7.63%   | 2.98M  | 09:28:00 |
+| Amesite             | AMST     | 0.369  | 0.059  | +19.03%  | 2.45M  | 09:21:45 |

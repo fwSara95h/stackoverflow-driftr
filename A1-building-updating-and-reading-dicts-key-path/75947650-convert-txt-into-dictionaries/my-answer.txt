@@ -1,0 +1,3 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/75949375 (posted 2023-04-06), extracted verbatim; may need the question's context to run.
+
+then the resulting `dict_list` would be **`[{'k1': 'v1', 'k2': 'v2', 'k3': 'v3'}]`** (i.e., `v4` would be cropped out instead of being tacked onto `v3`)

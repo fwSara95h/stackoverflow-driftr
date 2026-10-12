@@ -1,0 +1,266 @@
+[
+    {
+        "itemType": "productV3",
+        "productType": "natural",
+        "nativeCardType": "nt_srp_cell_g",
+        "itemCardType": "manhattan",
+        "productId": "3256804896450950",
+        "lunchTime": "2022-12-20 00:00:00",
+        "image": {
+            "imgUrl": "//ae01.alicdn.com/kf/S39f71cffe79a4a6981083f57128103c9d/Anti-Gravity-Humidifier-Diffuser-Water-Drop-Falling-Remote-Control-Mini-Mist-Maker-Humidifier-Air-Purifiers-Droplets.jpg_220x220xz.jpg",
+            "imgWidth": 220,
+            "imgHeight": 220,
+            "imgType": "0"
+        },
+        "title": {
+            "seoTitle": "Anti Gravity Humidifier Diffuser Water Drop Falling Remote Control Mini Mist Maker Humidifier Air Purifiers Droplets Upflow USB",
+            "displayTitle": "Anti Gravity Humidifier Diffuser Water Drop Falling Remote Control Mini Mist Maker Humidifier Air Purifiers Droplets Upflow USB",
+            "shortTitle": false
+        },
+        "prices": {
+            "skuId": "12000031580241123",
+            "pricesStyle": "default",
+            "builderType": "skuCoupon",
+            "currencySymbol": "US $",
+            "prefix": "Sale price:",
+            "salePrice": {
+                "discount": -1,
+                "minPriceDiscount": 50,
+                "priceType": "sale_price",
+                "currencyCode": "USD",
+                "minPrice": 26,
+                "minPriceType": 2,
+                "formattedPrice": "US $26.00"
+            },
+            "taxRate": "0"
+        },
+        "sellingPoints": [
+            {
+                "sellingPointTagId": "m0000063",
+                "tagStyleType": "default",
+                "tagContent": {
+                    "displayTagType": "text",
+                    "tagText": "Extra 1% off with coins",
+                    "tagStyle": {
+                        "color": "#FD384F",
+                        "position": "2"
+                    }
+                },
+                "source": "flexiCoin_new_atm"
+            },
+            {
+                "sellingPointTagId": "m0000064",
+                "tagStyleType": "default",
+                "tagContent": {
+                    "displayTagType": "text",
+                    "tagText": "Free Shipping",
+                    "tagStyle": {
+                        "color": "#009966",
+                        "position": "4"
+                    }
+                },
+                "source": "Free_Shipping_atm"
+            }
+        ],
+        "store": {
+            "storeId": 1102377281,
+            "aliMemberId": 2668032633,
+            "storeName": "Yousmile Life Store",
+            "storeUrl": "//www.aliexpress.com/store/1102377281"
+        },
+        "trace": {
+            "pdpParams": {
+                "pdp_cdi": "%7B%22traceId%22%3A%22212243c016730635978473504d06bf%22%2C%22itemId%22%3A%223256804896450950%22%2C%22fromPage%22%3A%22search%22%2C%22skuId%22%3A%2212000031580241123%22%2C%22shipFrom%22%3A%22US%22%2C%22order%22%3A%220%22%2C%22star%22%3A%22%22%2C%22freeShip%22%3A%22true%22%7D",
+                "pdp_npi": "2%40dis%21USD%2152.0%2126.0%21%21%21%21%21%40212243c016730635978473504d06bf%2112000031580241123%21sea",
+                "pdp_perf": "main_img=%2F%2Fae01.alicdn.com%2Fkf%2FS39f71cffe79a4a6981083f57128103c9d.jpg",
+                "pdp_ext_f": "%7B%22sku_id%22%3A%2212000031580241123%22%7D"
+            },
+            "exposure": {
+                "displayCategoryId": "",
+                "postCategoryId": "625",
+                "selling_point": "m0000063,m0000064",
+                "algo_exp_id": "77f9a225-26b3-4384-990c-3f411893324d-0"
+            },
+            "click": {
+                "algo_pvid": "77f9a225-26b3-4384-990c-3f411893324d",
+                "haveSellingPoint": "true"
+            },
+            "detailPage": {
+                "algo_pvid": "77f9a225-26b3-4384-990c-3f411893324d",
+                "algo_exp_id": "77f9a225-26b3-4384-990c-3f411893324d-0"
+            },
+            "custom": {},
+            "utLogMap": {
+                "original_price_type": "offer",
+                "formatted_price": "US $26.00",
+                "csp": "26.0,1",
+                "x_object_type": "productV3",
+                "algo_pvid": "77f9a225-26b3-4384-990c-3f411893324d",
+                "hit_19_forbidden": false,
+                "is_detail_next": "1",
+                "model_ctr": 0.06788578629493713,
+                "sku_id": "12000031580241123",
+                "mixrank_success": "false",
+                "custom_group": 3,
+                "sku_ic_tags": "[]",
+                "is_adult_certified": false,
+                "mixrank_enable": "false",
+                "ump_atmospheres": "none",
+                "oip": "52.0,0",
+                "selling_point": "m0000063,m0000064",
+                "original_price_strategy": "sku_opt",
+                "x_object_id": "1005005082765702"
+            }
+        }
+    },
+    {
+        "itemType": "productV3",
+        "productType": "natural",
+        "nativeCardType": "nt_srp_cell_g",
+        "itemCardType": "manhattan",
+        "productId": "3256803823899352",
+        "lunchTime": "2022-03-09 00:00:00",
+        "image": {
+            "imgUrl": "//ae01.alicdn.com/kf/S5d14059b4d364bf5a41d2c08a5d6e735y/Portable-Air-Purifier-Anion-Air-Purification-Xiomi-Air-Freshener-Ionizer-Cleaner-Dust-Cigarette-Smoke-Remover-Toilet.jpg_220x220xz.jpg",
+            "imgWidth": 220,
+            "imgHeight": 220,
+            "imgType": "0"
+        },
+        "title": {
+            "seoTitle": "Portable Air Purifier Anion Air Purification Xiomi Air Freshener Ionizer Cleaner Dust Cigarette Smoke Remover Toilet Deodorant",
+            "displayTitle": "Portable Air Purifier Anion Air Purification Xiomi Air Freshener Ionizer Cleaner Dust Cigarette Smoke Remover Toilet Deodorant",
+            "shortTitle": false
+        },
+        "prices": {
+            "skuId": "12000027730379754",
+            "pricesStyle": "default",
+            "builderType": "skuCoupon",
+            "currencySymbol": "US $",
+            "prefix": "Sale price:",
+            "originalPrice": {
+                "priceType": "original_price",
+                "currencyCode": "USD",
+                "minPrice": 20.8,
+                "minPriceType": 1,
+                "formattedPrice": "US $20.80"
+            },
+            "salePrice": {
+                "discount": -1,
+                "minPriceDiscount": 95,
+                "priceType": "sale_price",
+                "currencyCode": "USD",
+                "minPrice": 0.99,
+                "minPriceType": 2,
+                "formattedPrice": "US $0.99"
+            },
+            "taxRate": "0"
+        },
+        "sellingPoints": [
+            {
+                "sellingPointTagId": "m0000040",
+                "tagStyleType": "default",
+                "tagContent": {
+                    "displayTagType": "image",
+                    "tagImgUrl": "https://ae01.alicdn.com/kf/S8cbad032762b405b8ebd8f30bca4bc83u/338x64.png",
+                    "tagImgWidth": 338,
+                    "tagImgHeight": 64,
+                    "tagStyle": {
+                        "color": "#FD384F",
+                        "position": "1"
+                    }
+                },
+                "source": "new_user_platform_allowance_atm"
+            },
+            {
+                "sellingPointTagId": "m0000064",
+                "tagStyleType": "default",
+                "tagContent": {
+                    "displayTagType": "text",
+                    "tagText": "Free Shipping",
+                    "tagStyle": {
+                        "color": "#009966",
+                        "position": "4"
+                    }
+                },
+                "source": "Free_Shipping_atm"
+            },
+            {
+                "sellingPointTagId": "1000013764",
+                "tagStyleType": "default",
+                "tagContent": {
+                    "displayTagType": "text",
+                    "tagText": "Free Return",
+                    "tagStyle": {
+                        "color": "#009966",
+                        "position": "4"
+                    }
+                },
+                "source": "Free_return_atm"
+            }
+        ],
+        "evaluation": {
+            "starRating": 4.4,
+            "starUrl": "https://ae01.alicdn.com/kf/S567d6bf538214abf95c1e5825c7e6a05t/48x48.png",
+            "starWidth": 48,
+            "starHeight": 48
+        },
+        "trade": {
+            "tradeDesc": "1340 sold"
+        },
+        "store": {
+            "storeId": 1101982761,
+            "aliMemberId": 2657161543,
+            "storeName": "BOYALIGE Official Store",
+            "storeUrl": "//www.aliexpress.com/store/1101982761"
+        },
+        "trace": {
+            "pdpParams": {
+                "pdp_cdi": "%7B%22traceId%22%3A%22212243c016730635978473504d06bf%22%2C%22itemId%22%3A%223256803823899352%22%2C%22fromPage%22%3A%22search%22%2C%22skuId%22%3A%2212000027730379754%22%2C%22shipFrom%22%3A%22CN%22%2C%22order%22%3A%221340%22%2C%22star%22%3A%224.4%22%2C%22freeShip%22%3A%22true%22%2C%22shipSellingPoint%22%3A%22freeReturn%22%7D",
+                "pdp_npi": "2%40dis%21USD%2120.8%210.99%21%21%21%21%21%40212243c016730635978473504d06bf%2112000027730379754%21sea",
+                "pdp_perf": "main_img=%2F%2Fae01.alicdn.com%2Fkf%2FS5d14059b4d364bf5a41d2c08a5d6e735y.jpg",
+                "pdp_ext_f": "%7B%22sku_id%22%3A%2212000027730379754%22%7D"
+            },
+            "exposure": {
+                "displayCategoryId": "",
+                "postCategoryId": "613",
+                "selling_point": "m0000040,m0000064,1000013764",
+                "algo_exp_id": "77f9a225-26b3-4384-990c-3f411893324d-1"
+            },
+            "click": {
+                "algo_pvid": "77f9a225-26b3-4384-990c-3f411893324d",
+                "haveSellingPoint": "true"
+            },
+            "detailPage": {
+                "algo_pvid": "77f9a225-26b3-4384-990c-3f411893324d",
+                "algo_exp_id": "77f9a225-26b3-4384-990c-3f411893324d-1"
+            },
+            "custom": {},
+            "utLogMap": {
+                "original_price_type": "offer",
+                "formatted_price": "US $0.99",
+                "csp": "0.99,1",
+                "x_object_type": "productV3",
+                "algo_pvid": "77f9a225-26b3-4384-990c-3f411893324d",
+                "hit_19_forbidden": false,
+                "is_detail_next": "1",
+                "model_ctr": 0.21320748329162598,
+                "sku_id": "12000027730379754",
+                "mixrank_success": "false",
+                "custom_group": 3,
+                "sku_ic_tags": "[]",
+                "is_adult_certified": false,
+                "mixrank_enable": "false",
+                "ump_atmospheres": "new_user_platform_allowance,none",
+                "oip": "20.8,1",
+                "selling_point": "m0000040,m0000064,1000013764",
+                "original_price_strategy": "sku_opt",
+                "x_object_id": "1005004010214104"
+            }
+        },
+        "config": {
+            "prices": {
+                "color": "#FD384F"
+            }
+        }
+    }
+]

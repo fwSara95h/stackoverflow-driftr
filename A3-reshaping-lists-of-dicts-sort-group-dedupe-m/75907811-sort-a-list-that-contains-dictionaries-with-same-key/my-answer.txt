@@ -1,0 +1,9 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/75911088 (posted 2023-04-02), extracted verbatim; may need the question's context to run.
+dictList = [
+ {'key_1': 8, 'key_2': 6, 'key_3': 3, 'key_4': 7}, 
+ {'key_1': 4, 'key_2': 2, 'key_3': 4, 'key_4': 4},
+ {'key_1': 4, 'key_2': 5, 'key_3': 3, 'key_4': 3},
+ {'key_1': 8, 'key_2': 5, 'key_3': 9, 'key_4': 2},
+ {'key_1': 4, 'key_2': 5, 'key_3': 9, 'key_4': 0},
+ {'key_1': 0, 'key_2': 7, 'key_3': 1, 'key_4': 0},
+ {'key_1': 9, 'key_2': 0, 'key_3': 5, 'key_4': 5}]

@@ -1,0 +1,2 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73928355 (posted 2022-10-02), extracted verbatim; may need the question's context to run.
+title = cleanPageTitle(br.title(), "https://www.youtube.com/watch?v=RvCBzhhydNk")

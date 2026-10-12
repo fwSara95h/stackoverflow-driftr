@@ -1,0 +1,22 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74512696 (posted 2022-11-20), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+### [{id}_{sku}: {name}] for first 10 products of 100 ###
+
+33606786_5722576750824: Lotion tẩy tế bào chết làm sáng da Paula’s Choice Skin Perfecting 8% AHA Lotion 100ml 2060
+11239286_9792297299199: Gel tẩy da chết Arrahan Lemon White Peeling Gel (180ml)
+33606848_8573828662870: Kem tẩy da chết làm trắng sáng và đều màu da Paula’s Choice RESIST Daily Smoothing Treatment With 5% AHA 50 ml - 7660
+20525156_3751926198377: Tẩy Tế Bào Chết 3W Clinic Collagen Crystal Peeling Gel 180ml
+67089667_9204550497315: Combo 2 chai tiện lợi - Natureine AQUA PEEL Moisture Peeling Gel - Gel tẩy tế bào da chết, cấp ẩm Nhật Bản - Chính Hãng
+21481823_9335684703529: Gel tẩy tế bào chết sáng da hồng sâm Hàn Quốc My Gold Korea Red Ginseng Peeling Gel (130ml) – Hàng Chính Hãng
+46203526_8584500833846: Bông Tẩy Da Chết Cosrx One-Step Original Clear Pad 70 Sheets (New 2019)
+1941543_2999847759227: Kem tẩy tế bào chết mặt Organic Shop Organic Coffee & Powder 75ml
+57783000_9733773668061: Natureine AQUA PEEL Moisture Peeling Gel - Gel tẩy tế bào da chết, cấp ẩm Nhật Bản - Chính Hãng
+7319657_7325473003642: Trial Tinh chất dành cho da mụn cao cấp Resist BHA 9 0.83 ml
+
+--- block 2 ---
+page 1 [40 products]:    66640131   20116852   66638723   20525157   67089668 ...
+page 2 [40 products]:    63465592   20911921   54388844   58555745   13385021 ...
+page 3 [40 products]:     1515345   57703788    1060978   54929902    2076819 ...
+page 4 [40 products]:    35737314   26299382    7029351   14970693   32139853 ...
+page 5 [11 products]:    52274203   51988147   50422842   36828505   45439018 ...

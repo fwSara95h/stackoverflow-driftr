@@ -1,0 +1,3 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/77084197 (posted 2023-09-11), extracted verbatim; may need the question's context to run.
+Keyword: Meta, linkedin: https://www.linkedin.com/company/meta/
+Keyword: IBM, linkedin: https://www.linkedin.com/company/ibm/

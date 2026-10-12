@@ -1,0 +1,3 @@
+# Code from my Stack Overflow answer https://stackoverflow.com/a/74248514 (posted 2022-10-29), extracted verbatim; may need the question's context to run.
+str = None # in case str HASN'T been defined...
+del str

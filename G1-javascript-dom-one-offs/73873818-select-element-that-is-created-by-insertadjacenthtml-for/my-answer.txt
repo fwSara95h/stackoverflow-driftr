@@ -1,0 +1,17 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73875491 (posted 2022-09-28), extracted verbatim; may need the question's context to run.
+var liClass, cBtnInner;
+if (todo.complete) {
+    liClass = 'uncompleted well';
+    cBtnInner = 'UnComplete';
+} else {
+    liClass = 'completed well is';
+    cBtnInner = 'Complete';
+}
+todoListElem.insertAdjacentHTML(
+    'beforeend', 
+    '<li class="' + liClass + '"><label>' + todo.title + 
+        '</label><button class="btn btn-success" onclick="editTodo(' + 
+        todo.id + ')">' + cBtnInner + 
+        '</button><button class="btn btn-danger" onclick="removeTodo(' + 
+        todo.id + ')">Delete</button></li>'
+);

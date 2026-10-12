@@ -1,0 +1,9 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74947523 (posted 2022-12-29), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+- scroll down a certain number of times [it's best to over-estimate how many scrolls you need]
+- wait for the links and dates to load
+- click "Accept Cookies" (if you want to, doesn't make a difference tbh)
+
+--- block 2 ---
+- (If you are unfamiliar with CSS selectors, I often use [this reference](https://www.w3schools.com/cssref/css_selectors.php) as a cheatsheet.)

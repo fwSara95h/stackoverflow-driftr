@@ -1,0 +1,5 @@
+# Code from my Stack Overflow answer https://stackoverflow.com/a/74246118 (posted 2022-10-29), extracted verbatim; may need the question's context to run.
+# pasted your string excerpt to variable xstr: 
+xstr = '"overview":"\u003cp style=\"margin: 0px 0px 20px; padding: 0px; line-height: 20px; outline: none !important; min-height: 1em; color: #333333; font-family: Arial, Helvetica, sans-serif, emoji; font-size: 14px; font-style: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; text-align: center;\"\u003e\u003cspan style=\"font-family: arial, helvetica, sans-serif;\"\u003e\u003cstrong\u003e\u003cspan style=\"font-size: 18pt; outline: none !important;\"\u003eWTS/VDI macOS\u003c/span\u003e\u003c/strong\u003e\u003c/span\u003e\u003c/p\u003e\n\u003chr\u003e\n\u003cp\u003e\u003cspan ......'
+
+print(BeautifulSoup(xstr.encode('utf-8')).text)

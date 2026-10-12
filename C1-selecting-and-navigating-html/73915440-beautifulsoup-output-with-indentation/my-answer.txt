@@ -1,0 +1,2 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73932397 (posted 2022-10-03), extracted verbatim; may need the question's context to run.
+preString =  {'h1': '', 'h2': '\t', 'h3':'\t\t', 'h4':'\t\t\t'}

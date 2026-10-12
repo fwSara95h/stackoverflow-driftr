@@ -1,0 +1,2 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73931516 (posted 2022-10-03), extracted verbatim; may need the question's context to run.
+['Total Revenue', '42,965,391', '36,483,939', '20,139,658', '22,588,858', '25,067,279']

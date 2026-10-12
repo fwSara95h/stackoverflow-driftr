@@ -1,0 +1,39 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73938066 (posted 2022-10-03), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+var operator1;
+var operator2;
+
+--- block 2 ---
+function calcOp(operator) {
+  getInputAsNumber();
+  var op;
+  if (operator == 'add') {
+    writeResult(operator1 + operator2);
+  } else if (operator == 'sub') {
+    writeResult(operator1 - operator2);
+  } else if (operator == 'mul') {
+    writeResult(operator1 * operator2);
+  } else if (operator == 'div') {
+    writeResult(operator1 / operator2);
+  }
+}
+
+--- block 3 ---
+<h1>Calculator with Buttons</h1>
+<label>Operand 1:</label>
+<input id="op1" type="number">
+<br>
+<br>
+<label>Operand 2:</label>
+<input id="op2" type="number">
+<br>
+<br>
+<label>Operators: </label>
+<button onclick="calcOp('add');">+</button>
+<button onclick="calcOp('sub');">-</button>
+<button onclick="calcOp('mul');">*</button>
+<button onclick="calcOp('div');">/</button>
+<br>
+<br>
+<div id="result"><label>Result: </label><output id="output1x"></output></div>

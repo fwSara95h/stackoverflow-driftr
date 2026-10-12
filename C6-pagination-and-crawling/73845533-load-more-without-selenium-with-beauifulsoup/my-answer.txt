@@ -1,0 +1,13 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73846749 (posted 2022-09-25), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+dKey = loadMore.attrs['data-key']
+daUrl = '/title/tt0120762/reviews/_ajax'
+if 'data-ajaxurl' in loadMore.attrs:
+  daUrl = loadMore.attrs['data-ajaxurl']
+if not daUrl.startswith('/'): 
+  daUrl = daUrl + '/'
+
+--- block 2 ---
+lmUrl = rootUrl + daUrl + '?ref_=undefined&paginationKey=' + dKey
+return lmUrl

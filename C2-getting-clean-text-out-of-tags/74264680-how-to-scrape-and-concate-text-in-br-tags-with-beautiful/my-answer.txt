@@ -1,0 +1,46 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74277990 (posted 2022-11-01), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+Beschreibung:
+
+
+Zustand siehe Bild. Zusätzlich: Ecken und Kanten leicht bestoßen. Seiten und Buchschnitt altersbedingt leicht verfärbt. Buchschnitt fleckig, siehe Bilder. Ab der Hälfte des Buches sind die Seiten oben leicht gebogen.
+
+
+Die deutsche Sprache kennt zwar nur vier Fälle, dafür aber über tausend Zweifelsfälle. Heißt es Pizzas oder Pizzen? Gewinkt oder gewunken? Wann schreibt man Storys und wann Stories? Hat der Genitiv noch eine Chance — trotz des Dativs und dem Dativ zum Trotz?
+
+Dieses Buch präsentiert die großartige SPIEGEL¬ONLINE-Kolumne »Zwiebelfisch«, die Woche für Woche Leser amüsiert, schockiert, belehrt und begeistert.
+
+»Man spürt das Vergnügen, das der Umgang mit gutem Deutsch bereitet.« FAZ
+
+»Wo der Duden nicht weiter weiß, weiß Sick Rat.« Saarbrücker Zeitung
+
+Über das Buch:
+
+Die oder das Nutella — diese Frage hat schon viele Gemüter am Frühstückstisch bewegt. Der, die, das — wieso, weshalb, warum? Ob Nutella nun weiblich oder sächlich ist, ist sicherlich keine Frage auf Leben und Tod, aber eine Antwort hätten wir schon gern. Wir? Ja, wir hilflos Verlorenen im Labyrinth der deutschen Sprache. Wir, die wir unsere liebe Not mit der deutschen Sprache haben. Und leichter, verständlicher oder zumindest nachvollziehbarer ist es nach der Rechtschreibreform auch nicht geworden.
+In seinen hinreißend komischen und immer klugen Kolumnen bringt Bastian Sick Licht ins Dunkel der deutschen Sprachregelungen und sortiert den Sprachmüll. Ist der inflationären Verwendung von Binde-strichen noch Einhalt zu gebieten, angesichts von Spar-Plänen und Quoten-Druck? Versinken wir sprachlich gesehen nicht längst im Hagel der Apostrophe, wenn Känguru's plötzlich in den Weiten Australien's leben? Derlei Unsinn scheint nicht mehr aufhaltbar, wenn es nicht dieses Buch gäbe. Darauf zwei Espressis!
+
+Der Autor:
+
+Bastian Sick, Jahrgang 1965, Studium der Geschichtswissenschaft und Romanistik, Tätigkeit als Lektor und Übersetzer; von 1995-1998 Dokumentationsjournalist beim SPIEGEL-Verlag, ab Januar 1999 Mitarbeiter der Redaktion von SPIEGEL ONLINE. Seit Mai 2003 dort Autor der Kolumne »Zwiebelfisch«.
+
+--- block 2 ---
+Beschreibung:Zustand siehe Bild. Zusätzlich: Ecken und Kanten leicht bestoßen. Seiten und Buchschnitt altersbedingt leicht verfärbt. Buchschnitt fleckig, siehe Bilder. Ab der Hälfte des Buches sind die Seiten oben leicht gebogen.
+
+
+Die deutsche Sprache kennt zwar nur vier Fälle, dafür aber über tausend Zweifelsfälle. Heißt es Pizzas oder Pizzen? Gewinkt oder gewunken? Wann schreibt man Storys und wann Stories? Hat der Genitiv noch eine Chance — trotz des Dativs und dem Dativ zum Trotz?
+
+Dieses Buch präsentiert die großartige SPIEGEL¬ONLINE-Kolumne »Zwiebelfisch«, die Woche für Woche Leser amüsiert, schockiert, belehrt und begeistert.
+
+»Man spürt das Vergnügen, das der Umgang mit gutem Deutsch bereitet.« FAZ
+
+»Wo der Duden nicht weiter weiß, weiß Sick Rat.« Saarbrücker Zeitung
+
+Über das Buch:
+
+Die oder das Nutella — diese Frage hat schon viele Gemüter am Frühstückstisch bewegt. Der, die, das — wieso, weshalb, warum? Ob Nutella nun weiblich oder sächlich ist, ist sicherlich keine Frage auf Leben und Tod, aber eine Antwort hätten wir schon gern. Wir? Ja, wir hilflos Verlorenen im Labyrinth der deutschen Sprache. Wir, die wir unsere liebe Not mit der deutschen Sprache haben. Und leichter, verständlicher oder zumindest nachvollziehbarer ist es nach der Rechtschreibreform auch nicht geworden.
+In seinen hinreißend komischen und immer klugen Kolumnen bringt Bastian Sick Licht ins Dunkel der deutschen Sprachregelungen und sortiert den Sprachmüll. Ist der inflationären Verwendung von Binde-strichen noch Einhalt zu gebieten, angesichts von Spar-Plänen und Quoten-Druck? Versinken wir sprachlich gesehen nicht längst im Hagel der Apostrophe, wenn Känguru's plötzlich in den Weiten Australien's leben? Derlei Unsinn scheint nicht mehr aufhaltbar, wenn es nicht dieses Buch gäbe. Darauf zwei Espressis!
+
+Der Autor:
+
+Bastian Sick, Jahrgang 1965, Studium der Geschichtswissenschaft und Romanistik, Tätigkeit als Lektor und Übersetzer; von 1995-1998 Dokumentationsjournalist beim SPIEGEL-Verlag, ab Januar 1999 Mitarbeiter der Redaktion von SPIEGEL ONLINE. Seit Mai 2003 dort Autor der Kolumne »Zwiebelfisch«.

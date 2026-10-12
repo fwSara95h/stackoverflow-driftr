@@ -1,0 +1,3 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74051264 (posted 2022-10-13), extracted verbatim; may need the question's context to run.
+- I'd say "Tel_1" is fairly reliable, but some of the inconsistent patterns mean that other numbers in "Tel" might come out incorrect if they were separated with '/'.
+- Also, "Tel" is either a string or a list of strings depending on how many numbers there were in "tel_raw".

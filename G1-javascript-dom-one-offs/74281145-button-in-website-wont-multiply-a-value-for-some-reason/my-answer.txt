@@ -1,0 +1,82 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74281810 (posted 2022-11-01), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+function changeColor() {
+  window.alert("downloading virus");
+}
+
+--- block 2 ---
+body {
+  background-color: powderblue;
+}
+
+--- block 3 ---
+body {
+  background-image: url("bigboiwater.jpg");
+}
+
+--- block 4 ---
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: red;
+}
+
+--- block 5 ---
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+--- block 6 ---
+.water {
+  height: 20px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+--- block 7 ---
+#multym
+}
+{}
+.ih {
+  left: 1px;
+  width: 100px
+}
+.button {
+  margin: 0 auto;
+}
+#num {
+  font-size: 50;
+  color: pink;
+}
+
+--- block 8 ---
+<title>you should drink water</title>
+<link rel="icon" href="troll.png" />
+<div class="ih" style="cursor:progress" ;>
+  <h1 style="cursor:wait;">Water!</h1>
+  <h2 style="cursor:crosshair" ;>Water!</h2>
+  <h3 style="cursor:alias" ;>Water</h3>
+  <h4 style="cursor:not-allowed" ;>Water</h4>
+  <h5 style="cursor:zoom-in" ;>Water</h5>
+  <img src="troll.png">
+  <div class="water" ;><button onclick="changeColor()" ;><img src="Click-Here-PNG-Images.png"></button> </div>
+</div>
+
+--- block 9 ---
+<div>
+  <button onclick="adNum()" class="button">
+      <p id="earn">press for earn 1</p>
+    </button>
+  <button onclick="multiply()" class="button">
+      <p id="multiply">multiply earn by 2</p>
+    </button>
+  <button onclick="multy()" class="button">
+      <p id="multiplym">multiply multiply by 2</p>
+    </button>
+</div>
+<p id="num">hi</p>
+<div style="background-color:pink"><label for="Name">Whats your problem:</label><input type="text" id="Name" name="Name" placeholder="I am kinda stupid"></div>

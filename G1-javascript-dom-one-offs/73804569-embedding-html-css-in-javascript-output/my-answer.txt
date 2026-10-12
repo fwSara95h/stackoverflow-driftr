@@ -1,0 +1,14 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73848802 (posted 2022-09-26), extracted verbatim; may need the question's context to run.
+var opObj = [
+    {
+        'col1Name': `Batch ${z(idx + 1, 2)}A`,
+        'col2Name': `${prefix} ${A1}`,
+        'col3Name': `${prefix} ${A2}`,
+    },
+    {
+        'col1Name': `Batch ${z(idx + 1, 2)}B`,
+        'col2Name': `${prefix} ${B1}`,
+        'col3Name': `${prefix} ${B2}`,
+    }
+]
+var colHeaders = ['col1Name', 'col2Name', 'col3Name']

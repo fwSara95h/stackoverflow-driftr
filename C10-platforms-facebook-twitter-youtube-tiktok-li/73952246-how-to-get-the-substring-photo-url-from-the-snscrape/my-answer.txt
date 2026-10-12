@@ -1,0 +1,8 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/73953386 (posted 2022-10-04), extracted verbatim; may need the question's context to run.
+attributes_container.append([
+    tweet.user.username, tweet.date, tweet.likeCount, 
+    tweet.sourceLabel, tweet.content, 
+        (tweet.media[0].fullUrl if tweet.media 
+        and hasattr(tweet.media[0], 'fullUrl')
+        else tweet.media)
+])

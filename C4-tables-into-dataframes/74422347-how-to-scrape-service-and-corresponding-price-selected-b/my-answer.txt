@@ -1,0 +1,53 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74455631 (posted 2022-11-16), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+[
+   {'column-1': 'Wybielanie zębów w gabinecie preparatem Prevdent', 'column-2': '1600'} ,
+   {'column-1': 'Aparat stały (za jeden łuk): zamki metalowe | zamki ICONIX | zamki ceramiczne', 'column-2': '2500 | 2900 | 3500'} ,
+   {'column-1': 'Wizyta kontrolna w trakcie noszenia aparatu: 1 łuk | 2 łuki', 'column-2': '240 | 280'} ,
+   {'column-1': 'Leczenie aparatem INVISALIGN (przeźroczyste nakładki): diagnostyka | pakiet Standard | pakiet Full', 'column-2': '2000 | 11000 | 18000'} ,
+]
+
+--- block 2 ---
+{
+ 'Wybielanie zębów w gabinecie preparatem Prevdent': '1600',
+ 'Aparat stały (za jeden łuk): zamki metalowe | zamki ICONIX | zamki ceramiczne': '2500 | 2900 | 3500',
+ 'Wizyta kontrolna w trakcie noszenia aparatu: 1 łuk | 2 łuki': '240 | 280',
+ 'Leczenie aparatem INVISALIGN (przeźroczyste nakładki): diagnostyka | pakiet Standard | pakiet Full': '2000 | 11000 | 18000'
+}
+
+--- block 3 ---
+[
+   {0: 'Licówka porcelanowa', 1: '2000'} ,
+   {0: 'Dbamy o każdy szczegół wykonywanej pracy, aby przyszłe uzupełnienie w największym stopniu odzwierciedlało naturalny, piękny zdrowy uśmiech. Przed przystąpieniem do pracy wykonujemy waxup, dzięki któremu możemy zwizualizować i ocenić przyszłe efekty leczenia. Współpracujemy z uznanymi pracowniami dentystycznymi bazującymi na najnowszych materiałach oraz technologiach.', 1: 'Dbamy o każdy szczegół wykonywanej pracy, aby przyszłe uzupełnienie w największym stopniu odzwierciedlało naturalny, piękny zdrowy uśmiech. Przed przystąpieniem do pracy wykonujemy waxup, dzięki któremu możemy zwizualizować i ocenić przyszłe efekty leczenia. Współpracujemy z uznanymi pracowniami dentystycznymi bazującymi na najnowszych materiałach oraz technologiach.'} ,
+   {0: 'Bonding zębów metodą Flow-Injection (za ząb)', 1: '450'} ,
+   {0: 'Dzięki bogatemu doświadczeniu i wiedzy naszych specjalistów, jesteśmy w stanie przywrócić naturalny i piękny uśmiech, którym możesz dzielić się z innymi. Często przed wykonaniem odbudowy wykonujemy wizualizację w jamie ustnej, dzięki czemu możesz ocenić efekt przed ostateczną realizacją. Bonding wykonujemy techniką Flow-Injection, która jest zdecydowanie dokładniejsza niż tzw. odbudowa z ręki.', 1: 'Dzięki bogatemu doświadczeniu i wiedzy naszych specjalistów, jesteśmy w stanie przywrócić naturalny i piękny uśmiech, którym możesz dzielić się z innymi. Często przed wykonaniem odbudowy wykonujemy wizualizację w jamie ustnej, dzięki czemu możesz ocenić efekt przed ostateczną realizacją. Bonding wykonujemy techniką Flow-Injection, która jest zdecydowanie dokładniejsza niż tzw. odbudowa z ręki.'} ,
+   {0: 'Wybielanie zębów w gabinecie preparatem Prevdent', 1: '1600'} ,
+   {0: 'Metoda wybielania preparatem Prevdent jest w 100% bezpieczna i pozwala uzyskać naturalny efekt estetyczny. Cała procedura wykonywana jest w gabinecie stomatologicznym w trakcie jednej wizyty, która trwa około 2 godzin.', 1: 'Metoda wybielania preparatem Prevdent jest w 100% bezpieczna i pozwala uzyskać naturalny efekt estetyczny. Cała procedura wykonywana jest w gabinecie stomatologicznym w trakcie jednej wizyty, która trwa około 2 godzin.'} ,
+   {0: 'Wybielanie nakładkowe (szyny + 4 strzykawki Opalescence)', 1: '950'} ,
+   {0: 'Metoda nakładkowa polega na trójwymiarowym zeskanowaniu zębów pacjenta, a następnie przygotowaniu specjalnych, indywidualnych szyn, do których nakłada się żel wybielający Opalescence. Procedura wymaga 2 wizyt w odstępie paru dni (skan wewnątrzustny oraz oddanie nakładek). Efekt wybielania jest po około 7-10 dniach noszenia nakładek.', 1: 'Metoda nakładkowa polega na trójwymiarowym zeskanowaniu zębów pacjenta, a następnie przygotowaniu specjalnych, indywidualnych szyn, do których nakłada się żel wybielający Opalescence. Procedura wymaga 2 wizyt w odstępie paru dni (skan wewnątrzustny oraz oddanie nakładek). Efekt wybielania jest po około 7-10 dniach noszenia nakładek.'} ,
+   {0: 'Zabiegi z zakresu ortodoncji wykonuje lek. dent. Karolina Różycka-Popadiak (właściciel OptimDent). W trakcie leczenia wykorzystujemy światowe standardy i rozwiązania. Każdy przypadek jest inny dlatego leczenie rozpoczynamy od wnikliwej analizy klinicznej, starając się dobrać jak najodpowiedniejszy sposób leczenia.', 1: 'Zabiegi z zakresu ortodoncji wykonuje lek. dent. Karolina Różycka-Popadiak (właściciel OptimDent). W trakcie leczenia wykorzystujemy światowe standardy i rozwiązania. Każdy przypadek jest inny dlatego leczenie rozpoczynamy od wnikliwej analizy klinicznej, starając się dobrać jak najodpowiedniejszy sposób leczenia.'} ,
+   {0: 'Aparat stały (za jeden łuk): zamki metalowe | zamki ICONIX | zamki ceramiczne', 1: '2500 | 2900 | 3500'} ,
+   {0: 'Wizyta kontrolna w trakcie noszenia aparatu: 1 łuk | 2 łuki', 1: '240 | 280'} ,
+   {0: 'Leczenie aparatem INVISALIGN (przeźroczyste nakładki): diagnostyka | pakiet Standard | pakiet Full', 1: '2000 | 11000 | 18000'} ,
+   {0: 'Posiadamy najnowocześniejszy aparat rentgenowski. Aby wykonać zdjęcie nie musisz się umawiać, cała procedura trwa kilka minut, a wynik jest dostępny tuż po wykonaniu zdjęcia w wersji cyfrowej lub na kliszy.', 1: 'Posiadamy najnowocześniejszy aparat rentgenowski. Aby wykonać zdjęcie nie musisz się umawiać, cała procedura trwa kilka minut, a wynik jest dostępny tuż po wykonaniu zdjęcia w wersji cyfrowej lub na kliszy.'} ,
+   {0: 'Pantomogram (zdjęcie 2D wszystkich zębów)', 1: '90'} ,
+   {0: 'Cefalometria (zdjęcie boczne 2D używane głównie w ortodoncji)', 1: '90'} ,
+   {0: 'Tomografia komputerowa: odcinka | szczęki lub żuchwy | całość', 1: '140 | 250 | 350'} ,
+   {0: 'Pakiet Pantomogram + Cefalometria', 1: '150'} ,
+]
+
+--- block 4 ---
+[
+   {0: 'Licówka porcelanowa', 1: '2000'} ,
+   {0: 'Bonding zębów metodą Flow-Injection (za ząb)', 1: '450'} ,
+   {0: 'Wybielanie zębów w gabinecie preparatem Prevdent', 1: '1600'} ,
+   {0: 'Wybielanie nakładkowe (szyny + 4 strzykawki Opalescence)', 1: '950'} ,
+   {0: 'Aparat stały (za jeden łuk): zamki metalowe | zamki ICONIX | zamki ceramiczne', 1: '2500 | 2900 | 3500'} ,
+   {0: 'Wizyta kontrolna w trakcie noszenia aparatu: 1 łuk | 2 łuki', 1: '240 | 280'} ,
+   {0: 'Leczenie aparatem INVISALIGN (przeźroczyste nakładki): diagnostyka | pakiet Standard | pakiet Full', 1: '2000 | 11000 | 18000'} ,
+   {0: 'Pantomogram (zdjęcie 2D wszystkich zębów)', 1: '90'} ,
+   {0: 'Cefalometria (zdjęcie boczne 2D używane głównie w ortodoncji)', 1: '90'} ,
+   {0: 'Tomografia komputerowa: odcinka | szczęki lub żuchwy | całość', 1: '140 | 250 | 350'} ,
+   {0: 'Pakiet Pantomogram + Cefalometria', 1: '150'} ,
+]

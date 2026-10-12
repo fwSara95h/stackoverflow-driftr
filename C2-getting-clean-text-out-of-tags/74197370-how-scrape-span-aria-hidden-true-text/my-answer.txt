@@ -1,0 +1,11 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74198014 (posted 2022-10-25), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+Text1: "Crédit Agricole CIB · Full-time" 
+Text2: "Crédit Agricole CIB · Full-time"
+
+--- block 2 ---
+[ Position: "Structured Products & Equity Derivatives Sales" ]  [ Company+Type: "Crédit Agricole CIB · Full-time" ]  [ Dates: "Jan 2020 - Present · 2 yrs 10 mos" ]  [ Location: "Paris, Île-de-France, France" ] 
+[ Position: "Equity Sales Trader Assistant" ]  [ Company+Type: "ODDO BHF · Internship" ]  [ Dates: "Jun 2019 - Jan 2020 · 8 mos" ]  [ Location: "Paris, Île-de-France, France" ] 
+[ Position: "Wealth Management Analyst" ]  [ Company+Type: "HSBC · Internship" ]  [ Dates: "Mar 2018 - Sep 2018 · 7 mos" ]  [ Location: "Paris, Île-de-France, France" ] 
+[ Position: "Business Developper" ]  [ Company+Type: "Capgemini · Internship" ]  [ Dates: "Jan 2017 - Aug 2017 · 8 mos" ]

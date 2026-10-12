@@ -1,0 +1,5 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74421202 (posted 2022-11-13), extracted verbatim; may need the question's context to run.
+0 Column1 Column2 Column3 Column4 Column5 Column6 Column7 Column8
+0  Value1  Value2  Value3  Value4  Value5  Value6  Value7  Value8
+1  Value1  Value2  Value3  Value4  Value5  Value6  Value7  Value8
+2  Value1  Value2  Value3  Value4  Value5  Value6  Value7  Value8

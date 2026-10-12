@@ -1,0 +1,8 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/79579163 (posted 2025-04-17), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+>     url = f"https://iris.who.int/discover?filtertype=dateIssued&filter_relational_operator=equals&filter=2025&rpp={RPP}&page={page_num}"
+>
+
+--- block 2 ---
+url = f"https://iris.who.int/discover?filtertype_1=dateIssued&filter_relational_operator_1=equals&filter_1=2025&filtertype_2=iso&filter_relational_operator_2=equals&filter_2=English&rpp={RPP}&page={page_num}"

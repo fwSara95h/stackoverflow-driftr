@@ -1,0 +1,3 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74778935 (posted 2022-12-13), extracted verbatim; may need the question's context to run.
+{water} Some text... {steel} some more text.
+Para 2 text... {fire} span text more Para 2 text.

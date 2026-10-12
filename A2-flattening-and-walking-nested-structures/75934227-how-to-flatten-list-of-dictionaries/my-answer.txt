@@ -1,0 +1,11 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/75934500 (posted 2023-04-04), extracted verbatim; may need the question's context to run.
+
+--- block 1 ---
+
+<br>
+
+Ofc you can also define `process1` and `process2` as separate variables:
+
+--- block 2 ---
+
+or

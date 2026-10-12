@@ -1,0 +1,28 @@
+Code from my Stack Overflow answer https://stackoverflow.com/a/74071424 (posted 2022-10-14), extracted verbatim; may need the question's context to run.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  DISTRICT:   |   KASARGOD   |  LOCAL BODY  |  G14001-Kum  |
+|    WARD:     |  001-ANNADU  |  POLLING ST  |  002-G J B   |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  Serial No   |     Name     |  Guardian's  |  New House   |  House Name  |  Gender / A  |  ID Card No  |
+|      1       |              |     Adru     |      1       |              |    M / 55    |  KL/01/002/  |
+|      2       |              |    Battya    |      1       |              |    F / 41    |  KL/01/002/  |
+|      3       |              |              |  MOIDEEN KU  |     289      |  C.H.NAGAR   |    F / 22    |  SECID15757  |
+|     566      |              |  MOHAMMED K  |     296      |  ANNADKA HO  |    M / 49    |  SECID15400  |
+|     567      |              |  MOIDDEEN K  |     296      |  ANNADKA HO  |    F / 40    |  SECID15400  |
+|     568      |              |  MOHAMMED K  |     296      |  MUNDRAKOLA  |    M / 36    |  SECID15400  |
+|     569      |              |    RADHA     |     381      |  MACHAVU HO  |    M / 23    |  SECID15400  |
+|     570      |              |  SHIVAPPA S  |     576      |  UJJANTHODY  |    F / 47    |  ZII0819813  |
+|     571      |              |  SURESHA K   |     826      |  KARUVALTHA  |    F / 33    |  JWQ1718857  |
+|  കൂട്ടിച്ചേ  |
+|     572      |   DIVYA K    |  SUNDARA K   |     182      |  BHANDARA V  |    F / 24    |  ZII0767137  |
+|     573      |   KUNHAMMA   |  ACHU BELCH  |     185      |  PODIPALLA   |    F / 84    |  KL/01/002/  |
+|     574      |  SUJATHA M   |  KESHAVAN K  |     186      |  PODIPALLA   |    F / 48    |  JWQ1687797  |
+|     575      |   SARATH M   |  SUJATHA M   |     186      |  PODIPALLA   |    M / 25    |  SECID4BCFE  |
+|     576      |   SAJITH K   |  SUJATHA M   |     186      |  PODIPPALLA  |    M / 21    |  ZII3300043  |
+|  തിരുത്തലുക  |
+|     ഇല്ല     |
+|  ഒഴിവാക്കലു  |
+|     ഇല്ല     |
+|  |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
